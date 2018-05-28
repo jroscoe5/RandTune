@@ -11,6 +11,7 @@ import {DataAccess} from './DataAccess';
 import {SongModel} from './model/SongModel';
 import {UserModel} from './model/UserModel';
 import {ReviewModel} from './model/ReviewModel';
+import { mongo } from 'mongoose';
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -61,7 +62,7 @@ class App {
     // Get an mp3 file from the db
     // https://medium.com/@richard534/uploading-streaming-audio-using-nodejs-express-mongodb-gridfs-b031a0bcb20f
     // http://mongodb.github.io/node-mongodb-native/3.0/api/GridFSBucket.html#openDownloadStream
-    router.get('/songs/songdata/:songid', (req, res) => {
+    router.get('/songs/raw/:songid', (req, res) => {
       var mp3Id = new mongodb.ObjectID(req.params.songid);
       console.log("Fetching data for mp3 with id: " + mp3Id);
       res.set('content-type', 'audio/mp3');
@@ -85,6 +86,21 @@ class App {
       console.log("Requesting all users in db");
       this.Users.retrieveAllUsers(res);
     })
+
+    router.get('/users/:email', (req, res)=> {
+      var target = req.params.email;
+      console.log("Requesting a specific user with email: " + target);
+      this.Users.retrieveUser(res, {email: target});
+    })
+
+    router.get('/songs/meta/:songid', (req, res)=> {
+      var songid = req.params.songid;
+      console.log("Requesting meta data for song with _id: " + songid);
+      var id = new mongo.ObjectId(songid);
+      this.Songs.retrieveSong(res, {_id: id});
+    })
+
+
     // router.get('/songs', (req, res) => {
     //     console.log('Query all songs in db');
     //     this.Songs.retrieveAllSongs(res);

@@ -84,11 +84,11 @@ songCollection.insert({
     album: '',
     genre: 'electronic',
     review_count: 100,
-    musician: musicianid,
-    mp3_id: mp3id
+    musician: musicianid._id.valueOf(),
+    mp3_id: mp3id._id.valueOf()
 })
 var songid = songCollection.findOne({title: 'whump'},{_id: 1});
-userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid}}});
+userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid._id.valueOf()}}});
 
 // repeat
 mp3id = db.fs.files.findOne({filename: '..\\music\\untitled_11.mp3'}, {_id: 1});
@@ -98,11 +98,11 @@ songCollection.insert({
     album: '',
     genre: 'electronic',
     review_count: 100,
-    musician: musicianid,
-    mp3_id: mp3id
+    musician: musicianid._id.valueOf(),
+    mp3_id: mp3id._id.valueOf()
 })
 var songid = songCollection.findOne({title: 'untitled_11'},{_id: 1});
-userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid}}});
+userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid._id.valueOf()}}});
 
 mp3id = db.fs.files.findOne({filename: '..\\music\\untitled_8.mp3'}, {_id: 1});
 songCollection.insert({
@@ -111,11 +111,11 @@ songCollection.insert({
     album: '',
     genre: 'electronic',
     review_count: 100,
-    musician: musicianid,
-    mp3_id: mp3id
+    musician: musicianid._id.valueOf(),
+    mp3_id: mp3id._id.valueOf()
 })
 var songid = songCollection.findOne({title: 'untitled_8'},{_id: 1});
-userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid}}});
+userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid._id.valueOf()}}});
 
 //
 mp3id = db.fs.files.findOne({filename: '..\\music\\untitled_5.mp3'}, {_id: 1});
@@ -125,11 +125,11 @@ songCollection.insert({
     album: '',
     genre: 'electronic',
     review_count: 100,
-    musician: musicianid,
-    mp3_id: mp3id
+    musician: musicianid._id.valueOf(),
+    mp3_id: mp3id._id.valueOf()
 })
 var songid = songCollection.findOne({title: 'untitled_5'},{_id: 1});
-userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid}}});
+userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid._id.valueOf()}}});
 //
 mp3id = db.fs.files.findOne({filename: '..\\music\\untitled_4.mp3'}, {_id: 1});
 songCollection.insert({
@@ -138,11 +138,11 @@ songCollection.insert({
     album: '',
     genre: 'electronic',
     review_count: 100,
-    musician: musicianid,
-    mp3_id: mp3id
+    musician: musicianid._id.valueOf(),
+    mp3_id: mp3id._id.valueOf()
 })
 var songid = songCollection.findOne({title: 'untitled_4'},{_id: 1});
-userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid}}});
+userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid._id.valueOf()}}});
 //
 mp3id = db.fs.files.findOne({filename: '..\\music\\ty $ on this.mp3'}, {_id: 1});
 songCollection.insert({
@@ -151,11 +151,11 @@ songCollection.insert({
     album: '',
     genre: 'electronic',
     review_count: 100,
-    musician: musicianid,
-    mp3_id: mp3id
+    musician: musicianid._id.valueOf(),
+    mp3_id: mp3id._id.valueOf()
 })
 var songid = songCollection.findOne({title: 'ty $ on this'},{_id: 1});
-userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid}}});
+userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid._id.valueOf()}}});
 //
 mp3id = db.fs.files.findOne({filename: '..\\music\\star stealing loop.mp3'}, {_id: 1});
 songCollection.insert({
@@ -164,11 +164,11 @@ songCollection.insert({
     album: '',
     genre: 'electronic',
     review_count: 100,
-    musician: musicianid,
-    mp3_id: mp3id
+    musician: musicianid._id.valueOf(),
+    mp3_id: mp3id._id.valueOf()
 })
 var songid = songCollection.findOne({title: 'star stealing loop'},{_id: 1});
-userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid}}});
+userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid._id.valueOf()}}});
 //
 mp3id = db.fs.files.findOne({filename: '..\\music\\Proud.mp3'}, {_id: 1});
 songCollection.insert({
@@ -177,11 +177,11 @@ songCollection.insert({
     album: '',
     genre: 'electronic',
     review_count: 100,
-    musician: musicianid,
-    mp3_id: mp3id
+    musician: musicianid._id.valueOf(),
+    mp3_id: mp3id._id.valueOf()
 })
 var songid = songCollection.findOne({title: 'Proud'},{_id: 1});
-userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid}}});
+userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid._id.valueOf()}}});
 //
 mp3id = db.fs.files.findOne({filename: '..\\music\\pharaoh remaster.mp3'}, {_id: 1});
 songCollection.insert({
@@ -190,11 +190,11 @@ songCollection.insert({
     album: '',
     genre: 'electronic',
     review_count: 100,
-    musician: musicianid,
-    mp3_id: mp3id
+    musician: musicianid._id.valueOf(),
+    mp3_id: mp3id._id.valueOf()
 })
 var songid = songCollection.findOne({title: 'pharaoh remaster'},{_id: 1});
-userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid}}});
+userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid._id.valueOf()}}});
 //
 mp3id = db.fs.files.findOne({filename: '..\\music\\nightmare.mp3'}, {_id: 1});
 songCollection.insert({
@@ -203,11 +203,11 @@ songCollection.insert({
     album: '',
     genre: 'electronic',
     review_count: 100,
-    musician: musicianid,
-    mp3_id: mp3id
+    musician: musicianid._id.valueOf(),
+    mp3_id: mp3id._id.valueOf()
 })
 var songid = songCollection.findOne({title: 'nightmare'},{_id: 1});
-userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid}}});
+userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid._id.valueOf()}}});
 //
 mp3id = db.fs.files.findOne({filename: '..\\music\\miSTY moRNING HQ.mp3'}, {_id: 1});
 songCollection.insert({
@@ -216,11 +216,11 @@ songCollection.insert({
     album: '',
     genre: 'electronic',
     review_count: 100,
-    musician: musicianid,
-    mp3_id: mp3id
+    musician: musicianid._id.valueOf(),
+    mp3_id: mp3id._id.valueOf()
 })
 var songid = songCollection.findOne({title: 'miSTY moRNING HQ'},{_id: 1});
-userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid}}});
+userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid._id.valueOf()}}});
 //
 mp3id = db.fs.files.findOne({filename: '..\\music\\happy noises.mp3'}, {_id: 1});
 songCollection.insert({
@@ -229,11 +229,11 @@ songCollection.insert({
     album: '',
     genre: 'electronic',
     review_count: 100,
-    musician: musicianid,
-    mp3_id: mp3id
+    musician: musicianid._id.valueOf(),
+    mp3_id: mp3id._id.valueOf()
 })
 var songid = songCollection.findOne({title: 'happy noises'},{_id: 1});
-userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid}}});
+userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid._id.valueOf()}}});
 //
 mp3id = db.fs.files.findOne({filename: '..\\music\\guitar lullaby.mp3'}, {_id: 1});
 songCollection.insert({
@@ -242,24 +242,24 @@ songCollection.insert({
     album: '',
     genre: 'electronic',
     review_count: 100,
-    musician: musicianid,
-    mp3_id: mp3id
+    musician: musicianid._id.valueOf(),
+    mp3_id: mp3id._id.valueOf()
 })
 var songid = songCollection.findOne({title: 'guitar lullaby'},{_id: 1});
-userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid}}});
+userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid._id.valueOf()}}});
 //
-mp3id = db.fs.files.findOne({filename: '..\\music\\ glass them.mp3'}, {_id: 1});
+mp3id = db.fs.files.findOne({filename: '..\\music\\glass them.mp3'}, {_id: 1});
 songCollection.insert({
     title: 'glass them',
     description: 'description for glass them',
     album: '',
     genre: 'electronic',
     review_count: 100,
-    musician: musicianid,
-    mp3_id: mp3id
+    musician: musicianid._id.valueOf(),
+    mp3_id: mp3id._id.valueOf()
 })
 var songid = songCollection.findOne({title: 'glass them'},{_id: 1});
-userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid}}});
+userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid._id.valueOf()}}});
 //
 mp3id = db.fs.files.findOne({filename: '..\\music\\bell banger.mp3'}, {_id: 1});
 songCollection.insert({
@@ -268,11 +268,11 @@ songCollection.insert({
     album: '',
     genre: 'electronic',
     review_count: 100,
-    musician: musicianid,
-    mp3_id: mp3id
+    musician: musicianid._id.valueOf(),
+    mp3_id: mp3id._id.valueOf()
 })
 var songid = songCollection.findOne({title: 'bell banger'},{_id: 1});
-userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid}}});
+userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid._id.valueOf()}}});
 //
 mp3id = db.fs.files.findOne({filename: '..\\music\\chrono trappin.mp3'}, {_id: 1});
 songCollection.insert({
@@ -281,9 +281,11 @@ songCollection.insert({
     album: '',
     genre: 'electronic',
     review_count: 100,
-    musician: musicianid,
-    mp3_id: mp3id
+    musician: musicianid._id.valueOf(),
+    mp3_id: mp3id._id.valueOf()
 })
+var songid = songCollection.findOne({title: 'chrono trappin'},{_id: 1});
+userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid._id.valueOf()}}});
 //
 mp3id = db.fs.files.findOne({filename: '..\\music\\Chill Out.mp3'}, {_id: 1});
 songCollection.insert({
@@ -292,11 +294,11 @@ songCollection.insert({
     album: '',
     genre: 'electronic',
     review_count: 100,
-    musician: musicianid,
-    mp3_id: mp3id
+    musician: musicianid._id.valueOf(),
+    mp3_id: mp3id._id.valueOf()
 })
 var songid = songCollection.findOne({title: 'Chill Out'},{_id: 1});
-userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid}}});
+userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid._id.valueOf()}}});
 //
 mp3id = db.fs.files.findOne({filename: '..\\music\\8bit Nostalgia.mp3'}, {_id: 1});
 songCollection.insert({
@@ -305,67 +307,67 @@ songCollection.insert({
     album: '',
     genre: 'electronic',
     review_count: 100,
-    musician: musicianid,
-    mp3_id: mp3id
+    musician: musicianid._id.valueOf(),
+    mp3_id: mp3id._id.valueOf()
 })
 var songid = songCollection.findOne({title: '8bit Nostalgia'},{_id: 1});
-userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid}}});
+userCollection.update({email: "jroscoe5@gmail.com"},{"$push": {songs:{songID: songid._id.valueOf()}}});
 
 // Add reviews
 var userid = userCollection.findOne({email: 'cchung@gmail.com'},{_id :1});
 var songid = songCollection.findOne({title: 'Chill Out'},{_id: 1});
 reviewCollection.insert({
-    user_id: userid,
-    song_id: songid,
+    user_id: userid._id.valueOf(),
+    song_id: songid._id.valueOf(),
     review_content: 'I like this song',
     date: new Date(),
     rating: 5
 })
-var reviewid = reviewCollection.findOne({user_id: userid, song_id: songid},{_id: 1});
-userCollection.update({email: "cchung@gmail.com"},{"$push": {reviews:{reviewID: reviewid}}});
+var reviewid = reviewCollection.findOne({user_id: userid._id.valueOf(), song_id: songid._id.valueOf()},{_id: 1});
+userCollection.update({email: "cchung@gmail.com"},{"$push": {reviews:{reviewID: reviewid._id.valueOf()}}});
 
 var songid = songCollection.findOne({title: 'glass them'},{_id: 1});
 reviewCollection.insert({
-    user_id: userid,
-    song_id: songid,
+    user_id: userid._id.valueOf(),
+    song_id: songid._id.valueOf(),
     review_content: 'I like this song',
     date: new Date(),
     rating: 4.5
 })
-var reviewid = reviewCollection.findOne({user_id: userid, song_id: songid},{_id: 1});
-userCollection.update({email: "cchung@gmail.com"},{"$push": {reviews:{reviewID: reviewid}}});
+var reviewid = reviewCollection.findOne({user_id: userid._id.valueOf(), song_id: songid._id.valueOf()},{_id: 1});
+userCollection.update({email: "cchung@gmail.com"},{"$push": {reviews:{reviewID: reviewid._id.valueOf()}}});
 
 var songid = songCollection.findOne({title: 'untitled_4'},{_id: 1});
 reviewCollection.insert({
-    user_id: userid,
-    song_id: songid,
+    user_id: userid._id.valueOf(),
+    song_id: songid._id.valueOf(),
     review_content: 'I like this song',
     date: new Date(),
     rating: 4
 })
-var reviewid = reviewCollection.findOne({user_id: userid, song_id: songid},{_id: 1});
-userCollection.update({email: "cchung@gmail.com"},{"$push": {reviews:{reviewID: reviewid}}});
+var reviewid = reviewCollection.findOne({user_id: userid._id.valueOf(), song_id: songid._id.valueOf()},{_id: 1});
+userCollection.update({email: "cchung@gmail.com"},{"$push": {reviews:{reviewID: reviewid._id.valueOf()}}});
 
 
 var userid = userCollection.findOne({email: 'mafiag@gmail.com'},{_id :1});
 var songid = songCollection.findOne({title: 'Chill Out'},{_id: 1});
 reviewCollection.insert({
-    user_id: userid,
-    song_id: songid,
+    user_id: userid._id.valueOf(),
+    song_id: songid._id.valueOf(),
     review_content: 'I dont like this song',
     date: new Date(),
     rating: 2
 })
-var reviewid = reviewCollection.findOne({user_id: userid, song_id: songid},{_id: 1});
-userCollection.update({email: "mafiag@gmail.com"},{"$push": {reviews:{reviewID: reviewid}}});
+var reviewid = reviewCollection.findOne({user_id: userid._id.valueOf(), song_id: songid._id.valueOf()},{_id: 1});
+userCollection.update({email: "mafiag@gmail.com"},{"$push": {reviews:{reviewID: reviewid._id.valueOf()}}});
 
 var songid = songCollection.findOne({title: 'untitled_8'},{_id: 1});
 reviewCollection.insert({
-    user_id: userid,
-    song_id: songid,
+    user_id: userid._id.valueOf(),
+    song_id: songid._id.valueOf(),
     review_content: 'I dont like this song',
     date: new Date(),
     rating: 2
 })
-var reviewid = reviewCollection.findOne({user_id: userid, song_id: songid},{_id: 1});
-userCollection.update({email: "mafiag@gmail.com"},{"$push": {reviews:{reviewID: reviewid}}});
+var reviewid = reviewCollection.findOne({user_id: userid._id.valueOf(), song_id: songid._id.valueOf()},{_id: 1});
+userCollection.update({email: "mafiag@gmail.com"},{"$push": {reviews:{reviewID: reviewid._id.valueOf()}}});

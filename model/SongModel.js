@@ -27,10 +27,10 @@ var SongModel = /** @class */ (function () {
     SongModel.prototype.createModel = function () {
         this.model = mongooseConnection.model("Song", this.schema);
     };
-    SongModel.prototype.retrieveAllSongsForMusician = function (response, filter) {
-        var query = this.model.find(filter);
-        query.exec(function (err, itemArray) {
-            response.json(itemArray);
+    SongModel.prototype.retrieveSong = function (res, target) {
+        var query = this.model.find(target);
+        query.exec(function (err, song) {
+            res.json(song);
         });
     };
     return SongModel;

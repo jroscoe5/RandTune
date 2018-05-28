@@ -7,6 +7,7 @@ var bodyParser = require("body-parser");
 var SongModel_1 = require("./model/SongModel");
 var UserModel_1 = require("./model/UserModel");
 var ReviewModel_1 = require("./model/ReviewModel");
+var mongoose_1 = require("mongoose");
 // Creates and configures an ExpressJS web server.
 var App = /** @class */ (function () {
     //Run configuration methods on the Express instance.
@@ -44,7 +45,7 @@ var App = /** @class */ (function () {
         // Get an mp3 file from the db
         // https://medium.com/@richard534/uploading-streaming-audio-using-nodejs-express-mongodb-gridfs-b031a0bcb20f
         // http://mongodb.github.io/node-mongodb-native/3.0/api/GridFSBucket.html#openDownloadStream
-        router.get('/songs/songdata/:songid', function (req, res) {
+        router.get('/songs/raw/:songid', function (req, res) {
             var mp3Id = new mongodb.ObjectID(req.params.songid);
             console.log("Fetching data for mp3 with id: " + mp3Id);
             res.set('content-type', 'audio/mp3');
@@ -66,6 +67,17 @@ var App = /** @class */ (function () {
         router.get('/users', function (req, res) {
             console.log("Requesting all users in db");
             _this.Users.retrieveAllUsers(res);
+        });
+        router.get('/users/:email', function (req, res) {
+            var target = req.params.email;
+            console.log("Requesting a specific user with email: " + target);
+            _this.Users.retrieveUser(res, { email: target });
+        });
+        router.get('/songs/meta/:songid', function (req, res) {
+            var songid = req.params.songid;
+            console.log("Requesting meta data for song with _id: " + songid);
+            var id = new mongoose_1.mongo.ObjectId(songid);
+            _this.Songs.retrieveSong(res, { _id: id });
         });
         // router.get('/songs', (req, res) => {
         //     console.log('Query all songs in db');

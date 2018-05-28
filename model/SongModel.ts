@@ -37,10 +37,10 @@ class SongModel {
         this.model = mongooseConnection.model<ISongModel>("Song", this.schema);
     }
 
-    public retrieveAllSongsForMusician(response:any, filter:Object){
-        var query = this.model.find(filter);
-        query.exec((err,itemArray)=> {
-            response.json(itemArray);
+    public retrieveSong(res:any, target:Object){
+        var query = this.model.find(target);
+        query.exec((err,song)=> {
+            res.json(song);
         });
     }
 }
