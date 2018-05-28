@@ -110,18 +110,18 @@ class App {
       this.Songs.retrieveRandom(res);
     })
 
-    router.post('/upload/review/:userid/:songid/:content/:rating', (req, res) => {
-      var review = {
-        user_id: req.params.userid,
-        song_id: req.params.songid,
-        review_content: req.params.content,
-        date: new Date(),
-        rating: req.params.rating
-      };
-      var reviewid;
-      this.Reviews.uploadReview(review, reviewid);
-      this.Users.uploadReview()
-    })
+    // router.post('/upload/review/:userid/:songid/:content/:rating', (req, res) => {
+    //   var review = {
+    //     user_id: req.params.userid,
+    //     song_id: req.params.songid,
+    //     review_content: req.params.content,
+    //     date: new Date(),
+    //     rating: req.params.rating
+    //   };
+    //   var reviewid;
+    //   this.Reviews.uploadReview(review, reviewid);
+    //   this.Users.uploadReview()
+    // })
    
     this.expressApp.use('/', router);
     this.expressApp.use('/', express.static(__dirname+'/pages'));
