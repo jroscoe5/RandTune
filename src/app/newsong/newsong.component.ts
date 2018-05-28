@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SongServiceService } from '../song-service.service';
 
 @Component({
   selector: 'app-newsong',
@@ -7,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class NewsongComponent implements OnInit {
+	public song;
+	constructor(private _songServiceService: SongServiceService) { }
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+	ngOnInit() {
+		this.getSong();
+	}
+	
+	getSong() {
+		this._songServiceService.getSong().subscribe(
+			data => { this.song = data},
+			err => console.error(err),
+			() => console.log('done loading song')
+		);
+	}
 }
