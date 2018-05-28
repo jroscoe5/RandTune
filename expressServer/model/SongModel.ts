@@ -2,6 +2,7 @@ import Mongoose = require("mongoose");
 import {DataAccess} from './../DataAccess';
 import {ISongModel} from '../interfaces/ISongModel';
 
+let random = require('mongoose-simple-random')
 let mongooseConnection = DataAccess.mongooseConnection;
 let mongooseObj = DataAccess.mongooseInstance;
 
@@ -31,6 +32,7 @@ class SongModel {
                 mp3_id: String
             }, {collection: 'songs'}
         );
+        this.schema.plugin(random);
     }
 
     public createModel(): void {
@@ -42,6 +44,12 @@ class SongModel {
         query.exec((err,song)=> {
             res.json(song);
         });
+    }
+
+    public retrieveRandom(res:any){
+        this.model.findOneRandom(function(err, result) {
+              res.json(result);
+          });
     }
 }
 export {SongModel};

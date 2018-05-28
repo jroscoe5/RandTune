@@ -46,13 +46,15 @@ class UserModel {
         this.model = mongooseConnection.model<IUserModel>("User", this.schema);
     }
 
+    // retrieve a user using a filter
     public retrieveUser(response:any, filter:Object){
-        var query = this.model.find(filter);
+        var query = this.model.findOne(filter);
         query.exec((err,results)=> {
             response.json(results);
         });
     }
 
+    // retrieve all users from the database
     public retrieveAllUsers(response:any){
         var query = this.model.find({});
         query.exec((err,results)=> {

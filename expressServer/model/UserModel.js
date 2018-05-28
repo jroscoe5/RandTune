@@ -37,12 +37,14 @@ var UserModel = /** @class */ (function () {
     UserModel.prototype.createModel = function () {
         this.model = mongooseConnection.model("User", this.schema);
     };
+    // retrieve a user using a filter
     UserModel.prototype.retrieveUser = function (response, filter) {
-        var query = this.model.find(filter);
+        var query = this.model.findOne(filter);
         query.exec(function (err, results) {
             response.json(results);
         });
     };
+    // retrieve all users from the database
     UserModel.prototype.retrieveAllUsers = function (response) {
         var query = this.model.find({});
         query.exec(function (err, results) {
