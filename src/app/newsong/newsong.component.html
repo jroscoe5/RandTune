@@ -1,0 +1,65 @@
+<!-- New Song Page -->
+<div id="songs" class="container">
+	<div class="row">
+		<!-- Blog Entries Column -->
+		<div class="col-md-8">
+			<!-- Song Player Card -->
+			<div class="card mb-4">
+				<div class="card-body">
+					<audio id="player" controls>
+						<source id="mp3-src" src = "" type="audio/mp3"/>
+					</audio>
+					<h2 id="song-title" class="card-title">Song Name</h2>&nbsp;<p id="song-album">Album Name</p>
+					<p  id="song-desc" class="card-text"></p>
+				</div>
+			</div>
+			
+			<!-- Review Card -->
+			<div class="card mb-4">
+				<div class="card-body">
+					<h2 class="card-title">Review</h2>
+					<form action="/html/tags/html_form_tag_action.cfm" method="post">
+						<input type="radio" name="rating" value="1" checked>1
+						<input type="radio" name="rating" value="2" checked>2
+						<input type="radio" name="rating" value="3" checked>3
+						<input type="radio" name="rating" value="4" checked>4
+						<input type="radio" name="rating" value="5" checked>5
+						<div>
+							<textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;">What do you think of this song?
+							</textarea>
+						</div>
+						<input type="submit" value="Submit">
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- ./col-md-8 -->
+		
+		<!-- Musician Sidebar Column -->
+		<div class="sidebar col-md-4" style="padding-top:60px">
+			<div class="card my-4" id="song-sidebar">
+				<h5 id = "musician-name" class="card-header">Musician Name</h5>
+				<img class="card-img-top" src="https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" padding="100px"/>
+			</div>
+			<div class="card-body">
+				<p id = "musician-bio" class="card-text">A description of the musician</p>
+				<div class="row">
+					<div class="col-lg-6">
+						<ul class="list-unstyled mb-0">
+							<li>
+							<a id='musician-facebook'href="#">Facebook</a>
+							</li>
+							<li>
+							<a id='musician-twitter' href="#">Twitter</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /.sidebar -->
+		
+	</div>
+	<!-- /.row -->
+</div>
+<!-- /#songs -->
