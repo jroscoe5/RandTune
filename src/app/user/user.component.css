@@ -1,0 +1,45 @@
+.user-info {
+	padding-top: 60px;
+}
+
+body {
+  padding-top: 60px;
+}
+
+.sidebar {
+    padding-top: 60px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 60px;
+  }
+}
+
+.container {
+	padding-top: 60px;
+}
+
+.musician-image {
+	width: auto;
+	height: auto;
+	position: relative;
+}
+
+.user-profile {
+	padding-top: 60px;
+}
+
+.nav-fill {
+	background-color: #541388 !important;
+}
+
+.music-list {
+	border-color: #541388 !important;
+}
+
+.nav-fill:active {
+	background-color: #111111 !important;
+}
+
+	
