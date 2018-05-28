@@ -28,10 +28,17 @@ class ReviewModel{
         this.model = mongooseConnection.model<IReviewModel>("Review", this.schema);
     }
 
-    public retrieveReviewsForID(response:any, id:Object){
+    public retrieveReviewWithId(response:any, id:Object){
         var query = this.model.find(id);
         query.exec((err,itemArray)=> {
             response.json(itemArray);
+        });
+    }
+
+    public uploadReview(review:any){
+        this.model.save(function(err,review)
+        {
+            
         });
     }
 }

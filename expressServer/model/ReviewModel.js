@@ -21,11 +21,15 @@ var ReviewModel = /** @class */ (function () {
     ReviewModel.prototype.createModel = function () {
         this.model = mongooseConnection.model("Review", this.schema);
     };
-    ReviewModel.prototype.retrieveReviewsForID = function (response, id) {
+    ReviewModel.prototype.retrieveReviewWithId = function (response, id) {
         var query = this.model.find(id);
         query.exec(function (err, itemArray) {
             response.json(itemArray);
         });
+    };
+    ReviewModel.prototype.uploadReview = function (review) {
+        var query = this.model.create(review);
+        query.exec();
     };
     return ReviewModel;
 }());
