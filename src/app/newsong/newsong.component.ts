@@ -29,7 +29,7 @@ import ISongModelAngular from '../share/ISongModelAngular';
 import { Song } from '../share/Song';
 import IUserModelAngular from '../share/IUserModelAngular';
 import { User } from '../share/User';
-import { Plyr } from 'plyr';
+//import { Plyr } from 'plyr';
 
 @Component({
   //moduleId: module.id,
@@ -58,11 +58,20 @@ export class NewsongComponent implements OnInit {
     .subscribe(
       result => {
         this.title = result.title;
-		this.album = result.album;
-		this.musician = result.musician;
-		this.mp3Id = 'http://localhost:8080/songs/raw/' + result.mp3_id;
-		//let audioPlayer: HTMLMediaElement = document.getElementById('player');
-		var audioPlayer = <HTMLAudioElement>document.getElementById('player');
+		    this.album = result.album;
+		    this.musician = result.musician;
+		    this.mp3Id = 'http://localhost:8080/songs/raw/' + result.mp3_id;
+    
+        //let audioPlayer: HTMLMediaElement = document.getElementById('player');
+    
+    // const player = new Plyr(document.getElementById('player'), {
+    //   autopause: true,
+    //   seekTime: 15,
+    //   volume: 0.5,
+    //   muted: false
+    // });
+    
+    var audioPlayer = <HTMLAudioElement>document.getElementById('player');
 		audioPlayer.load();
       },
       () => {},
