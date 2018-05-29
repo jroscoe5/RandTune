@@ -1,6 +1,5 @@
 /*import { Component, OnInit, Input } from '@angular/core';
 import { SongService } from '../song-service.service';
-
 @Component({
   selector: 'app-newsong',
   templateUrl: './newsong.component.html',
@@ -8,7 +7,6 @@ import { SongService } from '../song-service.service';
 })
 export class NewsongComponent implements OnInit {
   song: any;
-
   constructor(songS: SongService) { 
     songS.getRandomSong()
     .subscribe(
@@ -17,10 +15,8 @@ export class NewsongComponent implements OnInit {
       () => console.log('REST call:' + this.song)
     );
   }
-
   ngOnInit() {
   }
-
 }*/
 
 import 'rxjs/add/operator/switchMap';
@@ -65,8 +61,9 @@ export class NewsongComponent implements OnInit {
 		this.album = result.album;
 		this.musician = result.musician;
 		this.mp3Id = 'http://localhost:8080/songs/raw/' + result.mp3_id;
-		var audio = document.getElementById('player');
-		audio.load();
+		//let audioPlayer: HTMLMediaElement = document.getElementById('player');
+		var audioPlayer = <HTMLAudioElement>document.getElementById('player');
+		audioPlayer.load();
       },
       () => {},
       () => {
