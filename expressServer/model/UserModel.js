@@ -53,8 +53,14 @@ var UserModel = /** @class */ (function () {
     };
     // add a review to a users collection
     UserModel.prototype.bindReviewToUser = function (userId, reviewId) {
-        var id = Mongoose.Types.ObjectId(userId);
-        this.model.updateOne({ _id: id }, { "$push": { reviews: { reviewID: reviewId.valueOf() } } });
+        console.log(reviewId);
+        var id = new Mongoose.Types.ObjectId(userId);
+        console.log(id);
+        var idVal = reviewId.valueOf();
+        this.model.findOne({ _id: id }, function (err, doc) {
+            doc.reviews.push({ reviewID: idVal });
+            doc.save();
+        });
     };
     return UserModel;
 }());
