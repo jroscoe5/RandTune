@@ -62,5 +62,11 @@ class UserModel {
         });
     }
 
+    // add a review to a users collection
+    public bindReviewToUser(userId:any, reviewId:any){
+        var id = Mongoose.Types.ObjectId(userId);
+        this.model.updateOne({_id: id},{"$push": {reviews:{reviewID: reviewId.valueOf()}}});
+    }
+
 }
 export {UserModel};

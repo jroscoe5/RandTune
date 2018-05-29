@@ -62,7 +62,7 @@ var App = /** @class */ (function () {
                 res.write(chunk);
             });
             downloadStream.on('error', function () {
-                res.sendStatus(404);
+                res.sendStatus(418); // not actually an appropriate error
             });
             downloadStream.on('end', function () {
                 res.end();
@@ -77,6 +77,11 @@ var App = /** @class */ (function () {
             var id = new mongodb.ObjectId(musid);
             console.log("Requesting a specific user with _id: " + musid);
             _this.Users.retrieveUser(res, { _id: id });
+        });
+        router.get('/users/profile/reviews/:id', function (req, res) {
+            var id = req.params.id;
+            console.log("Requesting all review for user with id: " + id);
+            _this.Reviews.retrieveReviewWithId(res, { user_id: id });
         });
         router.get('/users/profile/:email', function (req, res) {
             var email = req.params.email;
@@ -98,18 +103,19 @@ var App = /** @class */ (function () {
         router.get('/randomsong', function (req, res) {
             _this.Songs.retrieveRandom(res);
         });
-        // router.post('/upload/review/:userid/:songid/:content/:rating', (req, res) => {
-        //   var review = {
-        //     user_id: req.params.userid,
-        //     song_id: req.params.songid,
-        //     review_content: req.params.content,
-        //     date: new Date(),
-        //     rating: req.params.rating
-        //   };
-        //   var reviewid;
-        //   this.Reviews.uploadReview(review, reviewid);
-        //   this.Users.uploadReview()
-        // })
+        router.post('/upload/review/:userid/:songid/:content/:rating', function (req, res) {
+            var reviewid = new mongodb.ObjectId();
+            var review = {
+                _id: reviewid,
+                user_id: req.params.userid,
+                song_id: req.params.songid,
+                review_content: req.params.content,
+                date: new Date(),
+                rating: req.params.rating
+            };
+            _this.Reviews.uploadReview(review);
+            _this.Users.bindReviewToUser(req.params.userid, reviewid);
+        });
         this.expressApp.use('/', router);
         this.expressApp.use('/', express.static(__dirname + '/pages'));
     };
