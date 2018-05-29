@@ -65,8 +65,8 @@ export class NewsongComponent implements OnInit {
 		this.album = result.album;
 		this.musician = result.musician;
 		this.mp3Id = 'http://localhost:8080/songs/raw/' + result.mp3_id;
-		var audio = document.getElementById('player');
-		audio.load();
+		let audioPlayer: HTMLMediaElement = document.getElementById('player');
+		audioPlayer.load();
       },
       () => {},
       () => {
