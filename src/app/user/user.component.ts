@@ -38,9 +38,9 @@ export class UserComponent implements OnInit {
 			this.userBio = result.bio;
 			this.userFB = result.facebook;
 			this.userTwitter = result.twitter;
-			this.userBalance = result.balance;
+      this.userBalance = result.balance;
 		  },
-		() => {},
+		    () => {},
         () => {}
 	    );
   }

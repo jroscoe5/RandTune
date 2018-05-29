@@ -36,7 +36,7 @@ describe('Test get single song with /randomsong', function () {
         expect(response.body).to.satisfy(
             function (body) {
                 for (var i = 0; i < body.length; i++) {
-                    console.log('checking user: ' + i);
+                    console.log('\t checking user: ' + i);
                     expect(body[i]).to.have.property('username');
                     expect(body[i]).to.have.property('email');
                     expect(body[i]).to.have.property('password');

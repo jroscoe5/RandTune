@@ -24,6 +24,10 @@ body {
 	padding-top: 60px;
 }
 
+audio {
+	width: 100%;
+}
+
 .musician-image {
 	width: auto;
 	height: auto;
