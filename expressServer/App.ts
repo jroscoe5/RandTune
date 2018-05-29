@@ -7,10 +7,10 @@ import * as bodyParser from 'body-parser';
 import * as multer from 'multer';
 import * as stream from 'stream';
 
-import {DataAccess} from './DataAccess';
-import {SongModel} from './model/SongModel';
-import {UserModel} from './model/UserModel';
-import {ReviewModel} from './model/ReviewModel';
+import { DataAccess } from './DataAccess';
+import { SongModel } from './model/SongModel';
+import { UserModel } from './model/UserModel';
+import { ReviewModel } from './model/ReviewModel';
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -18,9 +18,9 @@ class App {
   // ref to Express instance
   public expressApp: express.Application;
   // mongoose models
-  public Songs:SongModel;
-  public Users:UserModel;
-  public Reviews:ReviewModel;
+  public Songs: SongModel;
+  public Users: UserModel;
+  public Reviews: ReviewModel;
   public db;
 
   //Run configuration methods on the Express instance.
@@ -35,16 +35,16 @@ class App {
   }
 
   // Use a mongoDB connection to fetch raw song data from db
-  private dbConnection(): void{
+  private dbConnection(): void {
     mongodb.MongoClient.connect('mongodb://admin:randtuneadmin@ds016298.mlab.com:16298/randtune', (err, database) => {
       //mongodb://admin:randtuneadmin@ds016298.mlab.com:16298/randtune
-      
+
       if (err) {
         console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
       }
       this.db = database;
       console.log('MP3 mongodb connection established');
-      });
+    });
   }
   // Configure Express middleware.
   private middleware(): void {
@@ -57,13 +57,13 @@ class App {
   private routes(): void {
 
     let router = express.Router();
-	
-	router.use( (req, res, next) => {
-		res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-        next();
+
+    router.use((req, res, next) => {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      next();
     });
-    
+
     // Get an mp3 file from the db
     // https://medium.com/@richard534/uploading-streaming-audio-using-nodejs-express-mongodb-gridfs-b031a0bcb20f
     // http://mongodb.github.io/node-mongodb-native/3.0/api/GridFSBucket.html#openDownloadStream
@@ -87,30 +87,36 @@ class App {
       });
     });
 
-    router.get('/users', (req, res)=> {
+    router.get('/users', (req, res) => {
       console.log("Requesting all users in db");
       this.Users.retrieveAllUsers(res);
     })
 
-    router.get('/users/:musicianid', (req, res)=> {
+    router.get('/users/:musicianid', (req, res) => {
       var musid = req.params.musicianid;
-	  var id = new mongodb.ObjectId(musid)
+      var id = new mongodb.ObjectId(musid)
       console.log("Requesting a specific user with _id: " + musid);
-      this.Users.retrieveUser(res, {_id: id});
+      this.Users.retrieveUser(res, { _id: id });
     })
 
-    router.get('/songs/meta/:songid', (req, res)=> {
+    router.get('/users/profile/:email', (req, res) => {
+      var email = req.params.email;
+      console.log("Requesting a specific user with email: " + email);
+      this.Users.retrieveUser(res, {email: email});
+    })
+
+    router.get('/songs/meta/:songid', (req, res) => {
       var songid = req.params.songid;
       console.log("Requesting meta data for song with _id: " + songid);
       var id = new mongodb.ObjectId(songid);
-      this.Songs.retrieveSong(res, {_id: id});
+      this.Songs.retrieveSong(res, { _id: id });
     })
 
     router.get('/reviews/:reviewid', (req, res) => {
       var reviewid = req.params.reviewid;
       console.log("Requesting review with _id: " + reviewid);
       var id = new mongodb.ObjectId(reviewid);
-      this.Reviews.retrieveReviewWithId(res, {_id: id});
+      this.Reviews.retrieveReviewWithId(res, { _id: id });
     })
 
     router.get('/randomsong', (req, res) => {
@@ -129,12 +135,12 @@ class App {
     //   this.Reviews.uploadReview(review, reviewid);
     //   this.Users.uploadReview()
     // })
-   
+
     this.expressApp.use('/', router);
-    this.expressApp.use('/', express.static(__dirname+'/pages'));
+    this.expressApp.use('/', express.static(__dirname + '/pages'));
 
   }
 
 }
 
-export {App};
+export { App };
