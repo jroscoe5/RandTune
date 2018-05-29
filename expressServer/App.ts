@@ -66,8 +66,8 @@ class App {
     // Get an mp3 file from the db
     // https://medium.com/@richard534/uploading-streaming-audio-using-nodejs-express-mongodb-gridfs-b031a0bcb20f
     // http://mongodb.github.io/node-mongodb-native/3.0/api/GridFSBucket.html#openDownloadStream
-    router.get('/songs/raw/:songid', (req, res) => {
-      var mp3Id = new mongodb.ObjectId(req.params.songid);
+    router.get('/songs/raw/:mp3id', (req, res) => {
+      var mp3Id = new mongodb.ObjectId(req.params.mp3id);
       console.log("Fetching data for mp3 with id: " + mp3Id);
       res.set('content-type', 'audio/mp3');
       res.set('accept-ranges', 'bytes');
@@ -92,7 +92,7 @@ class App {
       this.Users.retrieveAllUsers(res);
     })
 
-    //get a specific user by user _id
+    //get a specific user by musicianid to populate musician info for a song
     router.get('/users/:musicianid', (req, res) => {
       var musid = req.params.musicianid;
       var id = new mongodb.ObjectId(musid)
@@ -100,27 +100,21 @@ class App {
       this.Users.retrieveUser(res, { _id: id });
     })
 
-<<<<<<< HEAD
-    //get a specific user by email
-=======
+    //get all reviews by a user by _id
     router.get('/users/profile/reviews/:id', (req, res) => {
       var id = req.params.id;
       console.log("Requesting all review for user with id: " + id);
       this.Reviews.retrieveReviewWithId(res, {user_id: id});
     })
 
->>>>>>> cb7204e07685f4955a81652f07c6d59be953acfd
+    //get a specific user by email to fill profile information for a user
     router.get('/users/profile/:email', (req, res) => {
       var email = req.params.email;
       console.log("Requesting a specific user with email: " + email);
       this.Users.retrieveUser(res, {email: email});
     })
 
-<<<<<<< HEAD
     //requesting meta data for a song by song _id
-=======
-
->>>>>>> cb7204e07685f4955a81652f07c6d59be953acfd
     router.get('/songs/meta/:songid', (req, res) => {
       var songid = req.params.songid;
       console.log("Requesting meta data for song with _id: " + songid);
