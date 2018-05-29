@@ -46,12 +46,22 @@
 				<p id = "musician-bio" class="card-text">{{musicianBio}}</p>
 				<div class="row">
 					<div class="col-lg-6">
-						<ul class="list-unstyled mb-0">
+						<ul class="list-unstyled mb-0" style="flex-direction: row;">
 							<li>
-							<a id='musician-facebook'href="#">{{musicianFB}}</a>
+							<a id='musician-facebook'href={{musicianFB}}>
+								<span class="fa-stack fa-2x">
+									<span class="fa fa-square fa-stack-2x"></span>
+									<span class="fa fa-facebook fa-stack-1x fa-inverse"></span>
+								</span>
+							</a>
 							</li>
 							<li>
-							<a id='musician-twitter' href="#">{{musicianTwitter}}</a>
+							<a id='musician-twitter' href="{{musicianTwitter}}">
+								<span class="fa-stack fa-2x">
+									<span class="fa fa-square fa-stack-2x"></span>
+									<span class="fa fa-twitter fa-stack-1x fa-inverse"></span>
+								</span>
+							</a>
 							</li>
 						</ul>
 					</div>
