@@ -6,4 +6,12 @@ Web service for listenting and reviewing music
 
 | API Purpose | HTTP Verb | Express Route | Mongoose Model |
 | :---------- | :-------- | :------------ | :------------- |
-| Get mp3 file | GET | '/songs/raw/:songid' | Song.find({ '\_id: songid_'}) | 
+| Get mp3 file | GET | '/songs/raw/:mp3id' | Song.find({ :mp3id }) |
+| Get song object | GET | '/songs/meta/:songid' | Song.find({ :songid }) |
+| Get random song | GET | '/randomsong' | Song.findOneRandom({}) |
+| Get all users | GET | '/users' | User.find({}) |
+| Get one user | GET | '/users/:musicianid' | User.findOne({ :musicianid }) |
+| Get one user | GET | '/users/profile/:email' | User.findOne({ :email }) |
+| Get reviews submitted by a user | GET | '/users/profile/reviews/:id' | Review.find({ :id }) |
+| Get one review | GET | '/reviews/:reviewid' | Review.findOne({ :reviewid }) |
+| Post a song review | POST | '/upload/review/:userid/:songid/:content/:rating' | Review.create({ review }), User.updateOne({{:userid},{"$push": {reviews:{reviewID: reviewId.valueOf()}}}})|
