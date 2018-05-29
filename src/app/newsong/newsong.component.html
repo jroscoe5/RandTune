@@ -19,20 +19,15 @@
 			<div class="card mb-4">
 				<div class="card-body">
 					<h2 class="card-title">Review</h2>
-					<ngb-rating id="star" [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" max="5"></ngb-rating>
 					<form action="/html/tags/html_form_tag_action.cfm" method="post">
-						<!--<input type="radio" name="rating" value="1" checked>1
-						<input type="radio" name="rating" value="2" checked>2
-						<input type="radio" name="rating" value="3" checked>3
-						<input type="radio" name="rating" value="4" checked>4
-						<input type="radio" name="rating" value="5" checked>5-->
-						<div class="review-radio">
+						<!--<div class="review-radio">
 							<input type="radio" name="rating" value="1" checked>1
 							<input type="radio" name="rating" value="2" checked>2
 							<input type="radio" name="rating" value="3" checked>3
 							<input type="radio" name="rating" value="4" checked>4
 							<input type="radio" name="rating" value="5" checked>5
-						</div>
+						</div>-->
+						<ngb-rating id="stars" [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" max="5"></ngb-rating>
 						<div class="review-text">
 							<textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;">What do you think of this song?
 							</textarea>
@@ -52,12 +47,8 @@
 				<p id = "musician-bio" class="card-text">{{musicianBio}}</p>
 			</div>
 			<div class="card-body">
-				<p id = "musician-bio" class="card-text">{{musicianBio}}</p>
-				<div class="row justify-content-center">
-					<div class="col-lg-6">
-						<ul id="social-media" class="list-unstyled mb-0" style="flex-direction: row;">
 				<div>
-					<div class="col-lg-6">
+					<div class="col-lg-6 justify-content-center">
 						<ul class="list-unstyled mb-0 social-media-buttons">
 							<li>
 							<a id='musician-facebook'href={{musicianFB}}>
@@ -78,9 +69,13 @@
 						</ul>
 					</div>
 				</div>
-		
+			</div>
+		</div>
 		<!-- /.sidebar -->
+		
+	</div>
 	<!-- /.row -->
+</div>
 <!-- /#songs -->
 
 

@@ -42,10 +42,6 @@ body {
 	background-color: #111111 !important;
 }*/
 
-#social-media li {
-	display: inline;
-}
-
 .social-media-buttons {
 	display: flex;
 	flex-direction: row;

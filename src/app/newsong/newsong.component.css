@@ -6,6 +6,14 @@ body {
   padding-top: 60px;
 }
 
+/*.navbar-brand {
+    color: white !important;
+}*/
+
+/* .sidebar {
+    padding-top: 60px;
+} */
+
 @media (min-width: 992px) {
   body {
     padding-top: 60px;
@@ -48,10 +56,6 @@ h2#song-name {
   display: inline-block;
 }
 
-#social-media li {
-    display: inline;
-}
-
 div.review-radio {
 	padding: 10px 0 10px 0;
 	width: 100%;
@@ -80,20 +84,7 @@ div.review-text {
 	color: #2E294E;
 }
 
-/*.navbar {
-	background-color: purple !important;
-}
-
-ul.nav a {
-	color: #fff !important;
-}
-
-ul.nav a:hover {
-	color: #FFD400 !important;
->>>>>>> 277dfd0042e55cb7c4314ad05ca246c889eb1250
-}*/
-
-#star {
+#stars {
 	font-size: 2.5rem;
-    color: #FFD400;
+	color: #ffd400;
 }
