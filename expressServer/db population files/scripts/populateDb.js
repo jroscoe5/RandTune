@@ -16,9 +16,9 @@ userCollection.insert({
     username: 'jonnie',
     email: 'jroscoe5@gmail.com',
     password: 'password1',
-    bio: 'i like making music in my free time',
-    facebook: '',
-    twitter: '',
+    bio: 'i really like making music in my free time',
+    facebook: 'https://www.facebook.com/jonathon.roscoe',
+    twitter: 'https://twitter.com/',
     first_name: 'Jonnie',
     last_name: 'Roscoe',
     phone: '2532246613',
@@ -226,7 +226,7 @@ mp3id = db.fs.files.findOne({filename: '..\\music\\happy noises.mp3'}, {_id: 1})
 songCollection.insert({
     title: 'happy noises',
     description: 'description for happy noises',
-    album: '',
+    album: 'cool sounds',
     genre: 'electronic',
     review_count: 100,
     musician: musicianid._id.valueOf(),
@@ -239,7 +239,7 @@ mp3id = db.fs.files.findOne({filename: '..\\music\\guitar lullaby.mp3'}, {_id: 1
 songCollection.insert({
     title: 'guitar lullaby',
     description: 'description for guitar lullaby',
-    album: '',
+    album: 'cool sounds',
     genre: 'electronic',
     review_count: 100,
     musician: musicianid._id.valueOf(),
@@ -252,7 +252,7 @@ mp3id = db.fs.files.findOne({filename: '..\\music\\glass them.mp3'}, {_id: 1});
 songCollection.insert({
     title: 'glass them',
     description: 'description for glass them',
-    album: '',
+    album: 'cool sounds',
     genre: 'electronic',
     review_count: 100,
     musician: musicianid._id.valueOf(),
@@ -265,7 +265,7 @@ mp3id = db.fs.files.findOne({filename: '..\\music\\bell banger.mp3'}, {_id: 1});
 songCollection.insert({
     title: 'bell banger',
     description: 'description for bell banger',
-    album: '',
+    album: 'cool sounds',
     genre: 'electronic',
     review_count: 100,
     musician: musicianid._id.valueOf(),
@@ -278,7 +278,7 @@ mp3id = db.fs.files.findOne({filename: '..\\music\\chrono trappin.mp3'}, {_id: 1
 songCollection.insert({
     title: 'chrono trappin',
     description: 'description for chrono trappin',
-    album: '',
+    album: 'cool sounds',
     genre: 'electronic',
     review_count: 100,
     musician: musicianid._id.valueOf(),
@@ -291,7 +291,7 @@ mp3id = db.fs.files.findOne({filename: '..\\music\\Chill Out.mp3'}, {_id: 1});
 songCollection.insert({
     title: 'Chill Out',
     description: 'description for Chill Out',
-    album: '',
+    album: 'cool sounds',
     genre: 'electronic',
     review_count: 100,
     musician: musicianid._id.valueOf(),
@@ -304,7 +304,7 @@ mp3id = db.fs.files.findOne({filename: '..\\music\\8bit Nostalgia.mp3'}, {_id: 1
 songCollection.insert({
     title: '8bit Nostalgia',
     description: 'description for 8bit Nostalgia',
-    album: '',
+    album: 'cool sounds',
     genre: 'electronic',
     review_count: 100,
     musician: musicianid._id.valueOf(),
