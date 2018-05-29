@@ -5,12 +5,12 @@
 		<div class="col-md-8">
 			<!-- Song Player Card -->
 			<div class="card mb-4">
-				<div class="card-body">
+				<div class="card-body" ng-controller="ctlr">
 					<audio id="player" controls>
-						<source id="mp3-src" src = "" type="audio/mp3"/>
+						<source id="mp3-src" src={{mp3Id}} type="audio/mp3"/>
 					</audio>
-					<h2 id="song-title" class="card-title">{{song.title}}</h2>
-					<p id="song-album">Album Name</p>
+					<h2 id="song-title" class="card-title">{{title}}</h2>
+					<p id="song-album">{{album}}</p>
 					<p  id="song-desc" class="card-text"></p>
 				</div>
 			</div>
@@ -39,19 +39,19 @@
 		<!-- Musician Sidebar Column -->
 		<div class="sidebar col-md-4" style="padding-top:60px">
 			<div class="card my-4" id="song-sidebar">
-				<h5 id = "musician-name" class="card-header">Musician Name</h5>
+				<h5 id = "musician-name" class="card-header">{{musicianName}}</h5>
 				<img class="card-img-top" src="https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" padding="100px"/>
 			</div>
 			<div class="card-body">
-				<p id = "musician-bio" class="card-text">A description of the musician</p>
+				<p id = "musician-bio" class="card-text">{{musicianBio}}</p>
 				<div class="row">
 					<div class="col-lg-6">
 						<ul class="list-unstyled mb-0">
 							<li>
-							<a id='musician-facebook'href="#">Facebook</a>
+							<a id='musician-facebook'href="#">{{musicianFB}}</a>
 							</li>
 							<li>
-							<a id='musician-twitter' href="#">Twitter</a>
+							<a id='musician-twitter' href="#">{{musicianTwitter}}</a>
 							</li>
 						</ul>
 					</div>

@@ -57,6 +57,12 @@ class App {
   private routes(): void {
 
     let router = express.Router();
+	
+	router.use( (req, res, next) => {
+		res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+    });
     
     // Get an mp3 file from the db
     // https://medium.com/@richard534/uploading-streaming-audio-using-nodejs-express-mongodb-gridfs-b031a0bcb20f
@@ -86,10 +92,11 @@ class App {
       this.Users.retrieveAllUsers(res);
     })
 
-    router.get('/users/:email', (req, res)=> {
-      var target = req.params.email;
-      console.log("Requesting a specific user with email: " + target);
-      this.Users.retrieveUser(res, {email: target});
+    router.get('/users/:musicianid', (req, res)=> {
+      var musid = req.params.musicianid;
+	  var id = new mongodb.ObjectId(musid)
+      console.log("Requesting a specific user with _id: " + musid);
+      this.Users.retrieveUser(res, {_id: id});
     })
 
     router.get('/songs/meta/:songid', (req, res)=> {

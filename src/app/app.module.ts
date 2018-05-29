@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { routing } from './app.routing';
@@ -10,7 +10,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { MenubarComponent } from './menubar/menubar.component';
 import { NewsongComponent } from './newsong/newsong.component';
 import { UserComponent } from './user/user.component';
-import { SongServiceService } from './song-service.service';
+import { SongService } from './song-service.service';
 
 @NgModule({
   declarations: [
@@ -23,11 +23,11 @@ import { SongServiceService } from './song-service.service';
   imports: [
     BrowserModule,
 	FormsModule,
-	HttpClientModule,
+	HttpModule,
 	NgbModule.forRoot(),
 	routing,
   ],
-  providers: [SongServiceService],
+  providers: [SongService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

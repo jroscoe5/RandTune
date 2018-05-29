@@ -1,25 +1,89 @@
-import { Component, OnInit } from '@angular/core';
-import { SongServiceService } from '../song-service.service';
+/*import { Component, OnInit, Input } from '@angular/core';
+import { SongService } from '../song-service.service';
 
 @Component({
   selector: 'app-newsong',
   templateUrl: './newsong.component.html',
   styleUrls: ['./newsong.component.css']
 })
+export class NewsongComponent implements OnInit {
+  song: any;
+
+  constructor(songS: SongService) { 
+    songS.getRandomSong()
+    .subscribe(
+      result => this.song = result,
+      () => {},
+      () => console.log('REST call:' + this.song)
+    );
+  }
+
+  ngOnInit() {
+  }
+
+}*/
+
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+import { SongService } from '../song-service.service';
+import ISongModelAngular from '../share/ISongModelAngular';
+import { Song } from '../share/Song';
+import IUserModelAngular from '../share/IUserModelAngular';
+import { User } from '../share/User';
+import { Plyr } from 'plyr';
+
+@Component({
+  //moduleId: module.id,
+  selector: 'app-newsong',
+  templateUrl: './newsong.component.html',
+  styleUrls: ['./newsong.component.css']
+})
 
 export class NewsongComponent implements OnInit {
-	public song;
-	constructor(private _songServiceService: SongServiceService) { }
+  title: string;
+  album: string;
+  musician: string;
+  musicianName: string;
+  musicianBio: string;
+  musicianFB: string;
+  musicianTwitter: string;
+  mp3Id: string;
+  
 
-	ngOnInit() {
-		this.getSong();
-	}
-	
-	getSong() {
-		this._songServiceService.getSong().subscribe(
-			data => { this.song = data},
-			err => console.error(err),
-			() => console.log('done loading song')
-		);
-	}
+  constructor(
+    private route: ActivatedRoute,
+    private location: Location,
+    private song$: SongService
+  ) { 
+    song$.getRandomSong()
+    .subscribe(
+      result => {
+        this.title = result.title;
+		this.album = result.album;
+		this.musician = result.musician;
+		this.mp3Id = 'http://localhost:8080/songs/raw/' + result.mp3_id;
+		var audio = document.getElementById('player');
+		audio.load();
+      },
+      () => {},
+      () => {
+		song$.getMusician(this.musician)
+	    .subscribe(
+		  result => {
+			this.musicianName = result.username;
+			this.musicianBio = result.bio;
+			this.musicianFB = result.facebook;
+			this.musicianTwitter = result.twitter;
+		  },
+		() => {},
+        () => {}
+	    );}
+    );
+  }
+
+  ngOnInit() {}
+
 }

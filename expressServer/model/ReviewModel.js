@@ -28,8 +28,8 @@ var ReviewModel = /** @class */ (function () {
         });
     };
     ReviewModel.prototype.uploadReview = function (review) {
-        var query = this.model.create(review);
-        query.exec();
+        this.model.save(function (err, review) {
+        });
     };
     return ReviewModel;
 }());

@@ -1,14 +1,21 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
- 
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import 'rxjs/add/operator/map';
+
 @Injectable()
-export class SongServiceService {
- 
-    constructor(private http:HttpClient) {}
- 
-    // Uses http.get() to load data from a single API endpoint
-    getSong() {
-        return this.http.get('/app/newsong');
-    }
+export class SongService {
+
+  constructor(private http: Http) { }
+
+  getRandomSong() {
+    return this.http.get('http://localhost:8080/randomsong')
+    .map(response => response.json());
+  }
+  
+  getMusician(musicianId: string) {
+	  return this.http.get('http://localhost:8080/users/' + musicianId)
+	  .map(response => response.json());
+  }
 }

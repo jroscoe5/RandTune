@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {SongServiceService} from './song-service.service';
+import {SongService} from './song-service.service';
 import {Observable} from 'rxjs/Rx';
  
 @Component({

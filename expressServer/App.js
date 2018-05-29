@@ -41,6 +41,11 @@ var App = /** @class */ (function () {
     App.prototype.routes = function () {
         var _this = this;
         var router = express.Router();
+        router.use(function (req, res, next) {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            next();
+        });
         // Get an mp3 file from the db
         // https://medium.com/@richard534/uploading-streaming-audio-using-nodejs-express-mongodb-gridfs-b031a0bcb20f
         // http://mongodb.github.io/node-mongodb-native/3.0/api/GridFSBucket.html#openDownloadStream
@@ -67,10 +72,11 @@ var App = /** @class */ (function () {
             console.log("Requesting all users in db");
             _this.Users.retrieveAllUsers(res);
         });
-        router.get('/users/:email', function (req, res) {
-            var target = req.params.email;
-            console.log("Requesting a specific user with email: " + target);
-            _this.Users.retrieveUser(res, { email: target });
+        router.get('/users/:musicianid', function (req, res) {
+            var musid = req.params.musicianid;
+            var id = new mongodb.ObjectId(musid);
+            console.log("Requesting a specific user with _id: " + musid);
+            _this.Users.retrieveUser(res, { _id: id });
         });
         router.get('/songs/meta/:songid', function (req, res) {
             var songid = req.params.songid;
@@ -87,39 +93,18 @@ var App = /** @class */ (function () {
         router.get('/randomsong', function (req, res) {
             _this.Songs.retrieveRandom(res);
         });
-        router.get('/upload/review/:userid/:songid/:content/:rating', function (req, res) {
-            var review = {
-                user_id: req.params.userid,
-                song_id: req.params.songid,
-                review_content: req.params.content,
-                date: new Date(),
-                rating: req.params.rating
-            };
-            _this.Reviews.uploadReview(review);
-        });
-        // router.get('/songs', (req, res) => {
-        //     console.log('Query all songs in db');
-        //     this.Songs.retrieveAllSongs(res);
-        // });
-        // router.get('/newsong', (req, res) => {
-        //     console.log('Query random song from song collection');
-        //     this.Songs.retrieveRandom(res);
-        // });
-        // router.get('/users/:target/songs',(req,res) =>{
-        //     var target = req.params.target;
-        //     console.log("Query all songs by: " + target);
-        //     this.Songs.retrieveAllSongsForMusician(res, {musician: target});
-        // });
-        // router.get('/users/:target',(req,res) => {
-        //     var target = req.params.target;
-        //     console.log("Query user info for: " + target);
-        //     this.Listener.retrieveListener(res, {email: target});
-        // });
-        // router.get('/users/:target/reviews',(req,res) => {
-        //     var target = req.params.target;
-        //     console.log("Query all review for user: " + target);
-        //     this.Reviews.retrieveReviewsForID(res, {user_id: target});
-        // });
+        // router.post('/upload/review/:userid/:songid/:content/:rating', (req, res) => {
+        //   var review = {
+        //     user_id: req.params.userid,
+        //     song_id: req.params.songid,
+        //     review_content: req.params.content,
+        //     date: new Date(),
+        //     rating: req.params.rating
+        //   };
+        //   var reviewid;
+        //   this.Reviews.uploadReview(review, reviewid);
+        //   this.Users.uploadReview()
+        // })
         this.expressApp.use('/', router);
         this.expressApp.use('/', express.static(__dirname + '/pages'));
     };
