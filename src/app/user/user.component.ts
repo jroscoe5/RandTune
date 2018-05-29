@@ -17,46 +17,10 @@ import { Plyr } from 'plyr';
 })
 
 export class UserComponent implements OnInit {
-  title: string;
-  album: string;
-  musician: string;
-  musicianName: string;
-  musicianBio: string;
-  musicianFB: string;
-  musicianTwitter: string;
-  mp3Id: string;
+  userName: string;
   
 
-  constructor(
-    private route: ActivatedRoute,
-    private location: Location,
-    private song$: SongService
-  ) { 
-    song$.getRandomSong()
-    .subscribe(
-      result => {
-        this.title = result.title;
-		this.album = result.album;
-		this.musician = result.musician;
-		this.mp3Id = 'http://localhost:8080/songs/raw/' + result.mp3_id;
-		let audioPlayer: HTMLMediaElement = document.getElementById('player')
-		audioPlayer.load();
-      },
-      () => {},
-      () => {
-		song$.getMusician(this.musician)
-	    .subscribe(
-		  result => {
-			this.musicianName = result.username;
-			this.musicianBio = result.bio;
-			this.musicianFB = result.facebook;
-			this.musicianTwitter = result.twitter;
-		  },
-		() => {},
-        () => {}
-	    );}
-    );
-  }
+  constructor() {}
 
   ngOnInit() {}
 
