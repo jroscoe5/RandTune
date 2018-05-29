@@ -1,13 +1,15 @@
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
-import { Component, OnInit } from '@angular/core';
+import { Input, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
-import { SongService } from '../song-service.service';
+import { UserService } from './user-service.service';
 import ISongModelAngular from '../share/ISongModelAngular';
 import { Song } from '../share/Song';
 import IUserModelAngular from '../share/IUserModelAngular';
 import { User } from '../share/User';
+import IReviewModelAngular from '../share/IReviewModelAngular';
+import { Review } from '../share/Review';
 
 @Component({
   selector: 'app-user',
@@ -23,13 +25,15 @@ export class UserComponent implements OnInit {
   userFB: string;
   userTwitter: string;
   userBalance: number;
+  @Input() reviewNumber: number[] = [1,2,3,4,5];
+  reviews: IReviewModelAngular[];
   
   constructor(
 	private route: ActivatedRoute,
     private location: Location,
-    private song$: SongService
+    private user$: UserService
   ) {
-	  song$.getUser('mafiag@gmail.com')
+	  user$.getUser('mafiag@gmail.com')
 	  .subscribe(
 		  result => {
 			this.userFName = result.first_name;
@@ -41,8 +45,15 @@ export class UserComponent implements OnInit {
 			this.userBalance = result.balance;
 		  },
 		() => {},
-        () => {}
-	    );
+        () => {
+			user$.getReviews('5b0cc9a09564e6ea0f8923b5')
+			.subscribe(
+			  result => this.reviews = result,
+			  () => {},
+			  () => console.log('REST call:' + this.reviews)
+			);
+		}
+	   );
   }
 
   ngOnInit() {}
