@@ -26,6 +26,16 @@ body {
 	padding-top: 60px;
 }
 
+#song-sidebar img {
+	padding-bottom: 15 px;
+	border-radius: 5px;
+}
+
+#song-sidebar p.card-text {
+	padding: 30px 5px 30px 10px;
+	text-align: left;
+}
+
 .row {
 	padding-top: 60px;
 }
@@ -41,6 +51,47 @@ h2#song-name {
 #social-media li {
     display: inline;
 }
+
+div.review-radio {
+	padding: 10px 0 10px 0;
+	width: 100%;
+	display: flex;
+}
+
+div.review-text {
+	padding: 10px 0 10px 0;
+	width: 100%;
+	display: flex;
+}
+
+.social-media-buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.social-media-logo {
+	display: flex;
+	align-content: flex-start;
+	color: #541388;
+}
+
+.social-media-logo:hover {
+	color: #2E294E;
+}
+
+/*.navbar {
+	background-color: purple !important;
+}
+
+ul.nav a {
+	color: #fff !important;
+}
+
+ul.nav a:hover {
+	color: #FFD400 !important;
+>>>>>>> 277dfd0042e55cb7c4314ad05ca246c889eb1250
+}*/
 
 #star {
 	font-size: 2.5rem;

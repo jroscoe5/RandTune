@@ -46,4 +46,17 @@ body {
 	display: inline;
 }
 
+.social-media-buttons {
+	display: flex;
+	flex-direction: row;
+}
+
+.social-media-logo {
+	color: #541388;
+}
+
+.social-media-logo:hover {
+	color: #2E294E;
+}
+
 	
