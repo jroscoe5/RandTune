@@ -32,8 +32,10 @@ describe('Test get single song with /randomsong', function () {
     });
     
 	it('The song has known property types', function(){
+		expect(requestResult).to.have.property('_id');
 	    expect(requestResult).to.have.property('title');
 		expect(requestResult).to.have.property('musician');
+		expect(response.body).to.have.property('review_count').that.is.a('number')
 		expect(response.body).to.not.be.a.string;
 	});
 	

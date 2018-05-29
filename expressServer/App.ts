@@ -87,11 +87,13 @@ class App {
       });
     });
 
+    //get all users; unlikely this will be used other than internally
     router.get('/users', (req, res) => {
       console.log("Requesting all users in db");
       this.Users.retrieveAllUsers(res);
     })
 
+    //get a specific user by user _id
     router.get('/users/:musicianid', (req, res) => {
       var musid = req.params.musicianid;
       var id = new mongodb.ObjectId(musid)
@@ -99,12 +101,14 @@ class App {
       this.Users.retrieveUser(res, { _id: id });
     })
 
+    //get a specific user by email
     router.get('/users/profile/:email', (req, res) => {
       var email = req.params.email;
       console.log("Requesting a specific user with email: " + email);
       this.Users.retrieveUser(res, {email: email});
     })
 
+    //requesting meta data for a song by song _id
     router.get('/songs/meta/:songid', (req, res) => {
       var songid = req.params.songid;
       console.log("Requesting meta data for song with _id: " + songid);
@@ -112,6 +116,7 @@ class App {
       this.Songs.retrieveSong(res, { _id: id });
     })
 
+    //get reviews by review _id
     router.get('/reviews/:reviewid', (req, res) => {
       var reviewid = req.params.reviewid;
       console.log("Requesting review with _id: " + reviewid);
@@ -119,6 +124,7 @@ class App {
       this.Reviews.retrieveReviewWithId(res, { _id: id });
     })
 
+    //get random song from the database using mongo simple-random
     router.get('/randomsong', (req, res) => {
       this.Songs.retrieveRandom(res);
     })
