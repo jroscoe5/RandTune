@@ -16,6 +16,7 @@ class ReviewModel{
 
     public createSchema(): void {
         this.schema = new Mongoose.Schema({
+            _id: Mongoose.Schema.Types.ObjectId,
             user_id: String,
             song_id: String,
             review_content: String,
@@ -36,11 +37,11 @@ class ReviewModel{
     }
 
     public uploadReview(review:any){
-        this.model.save(function(err,review)
-        {
-            
-        });
+        var newReview = new this.model(review);
+        this.model.create(review);
+        // add error handling?
     }
+
 }
 
 export {ReviewModel}

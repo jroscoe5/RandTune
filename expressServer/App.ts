@@ -11,7 +11,6 @@ import { DataAccess } from './DataAccess';
 import { SongModel } from './model/SongModel';
 import { UserModel } from './model/UserModel';
 import { ReviewModel } from './model/ReviewModel';
-
 // Creates and configures an ExpressJS web server.
 class App {
 
@@ -80,7 +79,7 @@ class App {
         res.write(chunk);
       });
       downloadStream.on('error', () => {
-        res.sendStatus(404);
+        res.sendStatus(418); // not actually an appropriate error
       });
       downloadStream.on('end', () => {
         res.end();
@@ -101,14 +100,27 @@ class App {
       this.Users.retrieveUser(res, { _id: id });
     })
 
+<<<<<<< HEAD
     //get a specific user by email
+=======
+    router.get('/users/profile/reviews/:id', (req, res) => {
+      var id = req.params.id;
+      console.log("Requesting all review for user with id: " + id);
+      this.Reviews.retrieveReviewWithId(res, {user_id: id});
+    })
+
+>>>>>>> cb7204e07685f4955a81652f07c6d59be953acfd
     router.get('/users/profile/:email', (req, res) => {
       var email = req.params.email;
       console.log("Requesting a specific user with email: " + email);
       this.Users.retrieveUser(res, {email: email});
     })
 
+<<<<<<< HEAD
     //requesting meta data for a song by song _id
+=======
+
+>>>>>>> cb7204e07685f4955a81652f07c6d59be953acfd
     router.get('/songs/meta/:songid', (req, res) => {
       var songid = req.params.songid;
       console.log("Requesting meta data for song with _id: " + songid);
@@ -129,18 +141,19 @@ class App {
       this.Songs.retrieveRandom(res);
     })
 
-    // router.post('/upload/review/:userid/:songid/:content/:rating', (req, res) => {
-    //   var review = {
-    //     user_id: req.params.userid,
-    //     song_id: req.params.songid,
-    //     review_content: req.params.content,
-    //     date: new Date(),
-    //     rating: req.params.rating
-    //   };
-    //   var reviewid;
-    //   this.Reviews.uploadReview(review, reviewid);
-    //   this.Users.uploadReview()
-    // })
+    router.post('/upload/review/:userid/:songid/:content/:rating', (req, res) => {
+      var reviewid = new mongodb.ObjectId();
+      var review = {
+        _id: reviewid,
+        user_id: req.params.userid,
+        song_id: req.params.songid,
+        review_content: req.params.content,
+        date: new Date(),
+        rating: req.params.rating
+      };
+      this.Reviews.uploadReview(review);
+      this.Users.bindReviewToUser(req.params.userid, reviewid);
+    })
 
     this.expressApp.use('/', router);
     this.expressApp.use('/', express.static(__dirname + '/pages'));

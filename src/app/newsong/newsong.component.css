@@ -84,19 +84,7 @@ div.review-text {
 	color: #2E294E;
 }
 
-/*.navbar {
-	background-color: purple !important;
+#stars {
+	font-size: 2.5rem;
+	color: #ffd400;
 }
-
-ul.nav a {
-	color: #fff !important;
-}
-
-ul.nav a:hover {
-	color: #FFD400 !important;
-}
-
-.dropdown-menu {
-	color: purple !important;
-	background-color: purple !important;
-}*/

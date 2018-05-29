@@ -62,16 +62,18 @@ var App = /** @class */ (function () {
                 res.write(chunk);
             });
             downloadStream.on('error', function () {
-                res.sendStatus(404);
+                res.sendStatus(418); // not actually an appropriate error
             });
             downloadStream.on('end', function () {
                 res.end();
             });
         });
+        //get all users; unlikely this will be used other than internally
         router.get('/users', function (req, res) {
             console.log("Requesting all users in db");
             _this.Users.retrieveAllUsers(res);
         });
+        //get a specific user by user _id
         router.get('/users/:musicianid', function (req, res) {
             var musid = req.params.musicianid;
             var id = new mongodb.ObjectId(musid);
@@ -89,27 +91,30 @@ var App = /** @class */ (function () {
             var id = new mongodb.ObjectId(songid);
             _this.Songs.retrieveSong(res, { _id: id });
         });
+        //get reviews by review _id
         router.get('/reviews/:reviewid', function (req, res) {
             var reviewid = req.params.reviewid;
             console.log("Requesting review with _id: " + reviewid);
             var id = new mongodb.ObjectId(reviewid);
             _this.Reviews.retrieveReviewWithId(res, { _id: id });
         });
+        //get random song from the database using mongo simple-random
         router.get('/randomsong', function (req, res) {
             _this.Songs.retrieveRandom(res);
         });
-        // router.post('/upload/review/:userid/:songid/:content/:rating', (req, res) => {
-        //   var review = {
-        //     user_id: req.params.userid,
-        //     song_id: req.params.songid,
-        //     review_content: req.params.content,
-        //     date: new Date(),
-        //     rating: req.params.rating
-        //   };
-        //   var reviewid;
-        //   this.Reviews.uploadReview(review, reviewid);
-        //   this.Users.uploadReview()
-        // })
+        router.post('/upload/review/:userid/:songid/:content/:rating', function (req, res) {
+            var reviewid = new mongodb.ObjectId();
+            var review = {
+                _id: reviewid,
+                user_id: req.params.userid,
+                song_id: req.params.songid,
+                review_content: req.params.content,
+                date: new Date(),
+                rating: req.params.rating
+            };
+            _this.Reviews.uploadReview(review);
+            _this.Users.bindReviewToUser(req.params.userid, reviewid);
+        });
         this.expressApp.use('/', router);
         this.expressApp.use('/', express.static(__dirname + '/pages'));
     };

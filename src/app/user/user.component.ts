@@ -16,8 +16,9 @@ import { User } from '../share/User';
 })
 
 export class UserComponent implements OnInit {
-	
-  userName: string;
+  userFName: string;
+  userLName: string;
+  username: string;
   userBio: string;
   userFB: string;
   userTwitter: string;
@@ -31,7 +32,9 @@ export class UserComponent implements OnInit {
 	  song$.getUser('mafiag@gmail.com')
 	  .subscribe(
 		  result => {
-			this.userName = result.username;
+			this.userFName = result.first_name;
+			this.userLName = result.last_name;
+			this.username = result.username;
 			this.userBio = result.bio;
 			this.userFB = result.facebook;
 			this.userTwitter = result.twitter;
