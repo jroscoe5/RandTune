@@ -78,6 +78,11 @@ var App = /** @class */ (function () {
             console.log("Requesting a specific user with _id: " + musid);
             _this.Users.retrieveUser(res, { _id: id });
         });
+        router.get('/users/profile/:email', function (req, res) {
+            var email = req.params.email;
+            console.log("Requesting a specific user with email: " + email);
+            _this.Users.retrieveUser(res, { email: email });
+        });
         router.get('/songs/meta/:songid', function (req, res) {
             var songid = req.params.songid;
             console.log("Requesting meta data for song with _id: " + songid);
