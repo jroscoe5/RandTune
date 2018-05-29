@@ -9,8 +9,7 @@ var should = chai.should();
 var http = require('http');
 chai.use(chaiHttp);
 
-describe('Test Get Song Result', function () {
-//	this.timeout(15000);
+describe('Test get single song with /randomsong', function () {
 
 	var requestResult;
 	var response;

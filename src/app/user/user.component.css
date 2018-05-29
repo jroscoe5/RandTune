@@ -42,4 +42,17 @@ body {
 	background-color: #111111 !important;
 }
 
+.social-media-buttons {
+	display: flex;
+	flex-direction: row;
+}
+
+.social-media-logo {
+	color: #541388;
+}
+
+.social-media-logo:hover {
+	color: #2E294E;
+}
+
 	
