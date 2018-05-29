@@ -2,8 +2,7 @@
 Web service for listenting and reviewing music
 
 
-## REST API Routes
-<!-- https://docs.google.com/document/d/1p32VRTd7TEalaB6yXlx7dD3413zXV_6qL8d__VkNijA/edit -->
+## [REST API Routes](https://docs.google.com/document/d/1p32VRTd7TEalaB6yXlx7dD3413zXV_6qL8d__VkNijA/edit)
 
 | API Purpose | HTTP Verb | Express Route | Mongoose Model |
 | :---------- | :-------- | :------------ | :------------- |
