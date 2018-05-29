@@ -14,7 +14,7 @@
 					<table>
 						<tr>
 							<td><h4>Balance:</h4></td>
-							<td style="padding-left: 15px;"><div id="user-balance"></div></td>
+							<td style="padding-left: 15px;"><div id="user-balance">{{userBalance}}</div></td>
 						</tr>
 					</table>
 					<div class="row">
@@ -22,10 +22,10 @@
 							<ul class="list-unstyled mb-0">
 							
 								<li>
-								<a id="user-facebook" href="#">Facebook</a>
+								<a id="user-facebook" href="#">{{userFB}}</a>
 								</li>
 								<li>
-								<a id="user-twitter" href="#">Twitter</a>
+								<a id="user-twitter" href="#">{{userTwitter}}</a>
 								</li>
 							</ul>
 						</div>
@@ -39,8 +39,8 @@
 				<!-- User Name and Bio -->
 				<div class="card mb-4">
 					<div class="card-body">
-						<h1 id="user-name" class="card-title">Bob Smith</h1>
-						<p id="user-bio" class="card-text"></p>
+						<h1 id="user-name" class="card-title">{{userName}}</h1>
+						<p id="user-bio" class="card-text">{{userBio}}</p>
 					</div>
 				</div>
 

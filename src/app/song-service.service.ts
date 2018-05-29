@@ -18,4 +18,9 @@ export class SongService {
 	  return this.http.get('http://localhost:8080/users/' + musicianId)
 	  .map(response => response.json());
   }
+  
+  getUser(userEmail: string) {
+	  return this.http.get('http://localhost:8080/users/profile/' + userEmail)
+	  .map(response => response.json());
+  }
 }

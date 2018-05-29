@@ -8,7 +8,6 @@ import ISongModelAngular from '../share/ISongModelAngular';
 import { Song } from '../share/Song';
 import IUserModelAngular from '../share/IUserModelAngular';
 import { User } from '../share/User';
-import { Plyr } from 'plyr';
 
 @Component({
   selector: 'app-user',
@@ -17,10 +16,31 @@ import { Plyr } from 'plyr';
 })
 
 export class UserComponent implements OnInit {
+	
   userName: string;
+  userBio: string;
+  userFB: string;
+  userTwitter: string;
+  userBalance: number;
   
-
-  constructor() {}
+  constructor(
+	private route: ActivatedRoute,
+    private location: Location,
+    private song$: SongService
+  ) {
+	  song$.getUser('mafiag@gmail.com')
+	  .subscribe(
+		  result => {
+			this.userName = result.username;
+			this.userBio = result.bio;
+			this.userFB = result.facebook;
+			this.userTwitter = result.twitter;
+			this.userBalance = result.balance;
+		  },
+		() => {},
+        () => {}
+	    );
+  }
 
   ngOnInit() {}
 
