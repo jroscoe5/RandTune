@@ -3,7 +3,7 @@ import 'rxjs/add/operator/map';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
-import { SongService } from '../song-service.service';
+import { UserService } from './user-service.service';
 import ISongModelAngular from '../share/ISongModelAngular';
 import { Song } from '../share/Song';
 import IUserModelAngular from '../share/IUserModelAngular';
@@ -27,9 +27,9 @@ export class UserComponent implements OnInit {
   constructor(
 	private route: ActivatedRoute,
     private location: Location,
-    private song$: SongService
+    private user$: UserService
   ) {
-	  song$.getUser('mafiag@gmail.com')
+	  user$.getUser('mafiag@gmail.com')
 	  .subscribe(
 		  result => {
 			this.userFName = result.first_name;
