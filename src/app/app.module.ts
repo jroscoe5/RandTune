@@ -14,6 +14,11 @@ import { SongService } from './newsong/song-service.service';
 import { UserService } from './user/user-service.service';
 import { ReviewsGivenComponent } from './user/reviews-given/reviews-given.component';
 
+// import {VgCoreModule} from 'videogular2/core';
+// import {VgControlsModule} from 'videogular2/controls';
+// import {VgOverlayPlayModule} from 'videogular2/overlay-play';
+// import {VgBufferingModule} from 'videogular2/buffering';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,10 +30,14 @@ import { ReviewsGivenComponent } from './user/reviews-given/reviews-given.compon
   ],
   imports: [
     BrowserModule,
-	FormsModule,
-	HttpModule,
-	NgbModule.forRoot(),
-	routing,
+	  FormsModule,
+	  HttpModule,
+	  NgbModule.forRoot(),
+    routing,
+  //   VgCoreModule,
+  //   VgControlsModule,
+  //   VgOverlayPlayModule,
+  //   VgBufferingModule
   ],
   providers: [SongService, UserService],
   bootstrap: [AppComponent]
