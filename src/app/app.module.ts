@@ -12,6 +12,11 @@ import { NewsongComponent } from './newsong/newsong.component';
 import { UserComponent } from './user/user.component';
 import { SongService } from './song-service.service';
 
+// import {VgCoreModule} from 'videogular2/core';
+// import {VgControlsModule} from 'videogular2/controls';
+// import {VgOverlayPlayModule} from 'videogular2/overlay-play';
+// import {VgBufferingModule} from 'videogular2/buffering';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,10 +27,14 @@ import { SongService } from './song-service.service';
   ],
   imports: [
     BrowserModule,
-	FormsModule,
-	HttpModule,
-	NgbModule.forRoot(),
-	routing,
+	  FormsModule,
+	  HttpModule,
+	  NgbModule.forRoot(),
+    routing,
+  //   VgCoreModule,
+  //   VgControlsModule,
+  //   VgOverlayPlayModule,
+  //   VgBufferingModule
   ],
   providers: [SongService],
   bootstrap: [AppComponent]
