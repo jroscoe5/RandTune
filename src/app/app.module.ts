@@ -10,7 +10,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { MenubarComponent } from './menubar/menubar.component';
 import { NewsongComponent } from './newsong/newsong.component';
 import { UserComponent } from './user/user.component';
-import { SongService } from './song-service.service';
+import { SongService } from './newsong/song-service.service';
+import { UserService } from './user/user-service.service';
+import { ReviewsGivenComponent } from './user/reviews-given/reviews-given.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { SongService } from './song-service.service';
     WelcomeComponent,
     MenubarComponent,
     NewsongComponent,
-    UserComponent
+    UserComponent,
+    ReviewsGivenComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,7 @@ import { SongService } from './song-service.service';
 	NgbModule.forRoot(),
 	routing,
   ],
-  providers: [SongService],
+  providers: [SongService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

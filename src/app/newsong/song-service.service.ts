@@ -1,16 +1,16 @@
-/*import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class UserService {
+export class SongService {
 
   constructor(private http: Http) { }
 
-  getUser() {
-    return this.http.get('http://localhost:8080/users')
+  getRandomSong() {
+    return this.http.get('http://localhost:8080/randomsong')
     .map(response => response.json());
   }
   
@@ -18,4 +18,5 @@ export class UserService {
 	  return this.http.get('http://localhost:8080/users/' + musicianId)
 	  .map(response => response.json());
   }
-}*/
+
+}

@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {SongService} from './song-service.service';
 import {Observable} from 'rxjs/Rx';
  
 @Component({
@@ -8,6 +7,5 @@ import {Observable} from 'rxjs/Rx';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  //constructor(private _songServiceService: SongServiceService) { }
   constructor() {}
 }
