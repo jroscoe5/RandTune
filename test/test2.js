@@ -9,7 +9,7 @@ var should = chai.should();
 var http = require('http');
 chai.use(chaiHttp);
 
-describe('Test get single song with /randomsong', function () {
+describe('Test get all users', function () {
 
 	var requestResult;
 	var response;
