@@ -13,6 +13,7 @@ import { UserComponent } from './user/user.component';
 import { SongService } from './newsong/song-service.service';
 import { UserService } from './user/user-service.service';
 import { ReviewsGivenComponent } from './user/reviews-given/reviews-given.component';
+import { FooterComponent } from './footer/footer.component';
 
 // import {VgCoreModule} from 'videogular2/core';
 // import {VgControlsModule} from 'videogular2/controls';
@@ -26,7 +27,8 @@ import { ReviewsGivenComponent } from './user/reviews-given/reviews-given.compon
     MenubarComponent,
     NewsongComponent,
     UserComponent,
-    ReviewsGivenComponent
+    ReviewsGivenComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

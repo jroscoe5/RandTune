@@ -40,7 +40,7 @@ audio {
 
 #song-sidebar img {
 	padding-bottom: 15 px;
-	border-radius: 5px;
+	border-radius: 0;
 }
 
 #song-sidebar p.card-text {
@@ -99,4 +99,8 @@ div textarea {
 
 .sidebar div.card-body {
 	padding: 0;
+}
+
+.card-header {
+	background: white;
 }

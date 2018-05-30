@@ -27,9 +27,11 @@
 							<input type="radio" name="rating" value="4" checked>4
 							<input type="radio" name="rating" value="5" checked>5
 						</div>-->
-						<ngb-rating id="stars" [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" max="5"></ngb-rating>
-						<div class="review-text">
-							<textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;">What do you think of this song?
+						<div class="form-group">
+							<ngb-rating id="stars" [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" max="5"></ngb-rating>
+						</div>
+						<div class="review-text form-group">
+							<textarea name="comments" id="comments" class="form-control" style="font-family:sans-serif;font-size:1.2em;" rows="3" placeholder="What did you think of this song?" wrap="hard">
 							</textarea>
 						</div>
 						<input type="submit" value="Submit">
