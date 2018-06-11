@@ -1,18 +1,14 @@
 <div class="container">
-<!--<h4 class="panel-heading" style="background-color:#337ab7" >
-  <a style="color:white" [routerLink] = "['/review/', index+1]">{{index+1}} - {{review.date}}</a>
-</h4>-->
-
 	<div class="panel-body">
-		<table class="table" style="font-size:10pt;">
+		<table class="table" >
 		  <tbody>
-			<tr>
-				<td align="left">Username: <span class="badge">{{username}}</span></td>
-				<td align="left">Song: <span class="badge">{{title}}</span></td>
-				<td align="left">Rating: <span class="badge">{{review.rating}}</span></td>
+			<tr id="top-row">
+				<td align="left"><b>Song: </b>{{title}}</td>
+				<td align="left"><b>Artist: </b>{{musician}}</td>
+				<td align="left"><b>Rating: </b>{{review.rating}}</td>
 			</tr>
 			<tr>
-				<td align="left"><span class="badge">{{review.review_content}}</span></td>
+				<td align="left">{{review.review_content}}</td>
 			</tr>
 		  </tbody>
 		</table>

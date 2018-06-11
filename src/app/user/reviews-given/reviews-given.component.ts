@@ -15,8 +15,9 @@ import { Review } from '../../share/Review';
 export class ReviewsGivenComponent implements OnInit {
 @Input() review: IReviewModelAngular;
 @Input() index: number;
-username: string;
+musicianId: string;
 title: string;
+musician: string;
 
 constructor(
 	private route: ActivatedRoute,
@@ -25,18 +26,18 @@ constructor(
   ) {}
 
   ngOnInit() {
-	this.user$.getUserById(this.review.user_id)
+	this.user$.getSongById(this.review.song_id)
 	.subscribe(
 		result => {
-			this.username = result.username;
-			console.log(result.username);
+			this.title = result[0].title;
+			this.musicianId = result[0].musician;
 		},
 		() => {},
 		() => {
-			this.user$.getSongById(this.review.song_id)
+			this.user$.getUserById(this.musicianId)
 			.subscribe(
 				result => {
-					this.title = result[0].title;
+					this.musician = result.username;
 				},
 				() => {},
 				() => {}

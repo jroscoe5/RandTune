@@ -30,18 +30,6 @@ body {
 	padding-top: 60px;
 }
 
-/*.nav-fill {
-	background-color: #541388 !important;
-}
-
-.music-list {
-	border-color: #541388 !important;
-}
-
-.nav-fill:active {
-	background-color: #111111 !important;
-}*/
-
 .social-media-buttons {
 	display: flex;
 	flex-direction: row;
@@ -54,5 +42,10 @@ body {
 .social-media-logo:hover {
 	color: #2E294E;
 }
+
+.music-and-reviews {
+	background-color: #ec058e;
+}
+	
 
 	
