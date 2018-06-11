@@ -80,6 +80,11 @@ var App = /** @class */ (function () {
             console.log("Requesting a specific user with _id: " + musid);
             _this.Users.retrieveUser(res, { _id: id });
         });
+        router.get('/users/:musicianid/songs', function (req, res) {
+            var musid = req.params.musicianid;
+            console.log("Requesting all songs for a user with _id: " + musid);
+            _this.Songs.retrieveSong(res, { muscian: musid });
+        });
         //get all reviews by a user by _id
         router.get('/users/profile/reviews/:id', function (req, res) {
             var id = req.params.id;
