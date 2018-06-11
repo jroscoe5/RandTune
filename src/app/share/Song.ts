@@ -1,5 +1,4 @@
 export class Song {
-    //songId: string;
 	title: string;
 	description: string;
 	album: string;

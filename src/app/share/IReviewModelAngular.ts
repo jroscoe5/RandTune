@@ -1,6 +1,6 @@
 interface IReviewModelAngular {
     // id of reviews's author
-    author_id: string;
+    user_id: string;
     // id song specific to review
     song_id: string;
     // body of the review

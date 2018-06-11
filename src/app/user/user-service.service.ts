@@ -14,9 +14,28 @@ export class UserService {
 	  .map(response => response.json());
   }
   
-  getReviews(musicianId: string) {
-	  return this.http.get('http://localhost:8080/users/profile/reviews' + musicianId)
+  getUserById(userId: string) {
+	  return this.http.get('http://localhost:8080/users/' + userId)
 	  .map(response => response.json());
   }
-
+  
+  getReviews(musicianId: string) {
+	  return this.http.get('http://localhost:8080/users/profile/reviews/' + musicianId)
+	  .map(response => response.json());
+  }
+  
+  getSongById(songId: string) {
+	  return this.http.get('http://localhost:8080/songs/meta/' + songId)
+	  .map(response => response.json());
+  }
+  
+  getSongsByUserId(userId: string) {
+	  return this.http.get('http://localhost:8080/users/' + userId + '/songs')
+	  .map(response => response.json());
+  }
+  
+  submitReview(userId: string, songId: string, content: string, rating: string) {
+	string i = userId + '/' + songId + '/' + content + '/' + rating;
+	return this.http.post('http://localhost:8080/upload/review/', i);
+  }
 }

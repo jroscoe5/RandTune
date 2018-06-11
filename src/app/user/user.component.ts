@@ -1,3 +1,23 @@
+/*import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
+import { Input, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+import { SongService } from '../newsong/song-service.service';
+import { UserService } from './user-service.service';
+import ISongModelAngular from '../share/ISongModelAngular';
+import { Song } from '../share/Song';
+import IUserModelAngular from '../share/IUserModelAngular';
+import { User } from '../share/User';
+import IReviewModelAngular from '../share/IReviewModelAngular';
+import { Review } from '../share/Review';
+
+@Component({
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
+})*/
+
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import { Component, OnInit } from '@angular/core';
@@ -8,6 +28,10 @@ import ISongModelAngular from '../share/ISongModelAngular';
 import { Song } from '../share/Song';
 import IUserModelAngular from '../share/IUserModelAngular';
 import { User } from '../share/User';
+import IReviewModelAngular from '../share/IReviewModelAngular';
+import { Review } from '../share/Review';
+import { ReviewsGivenComponent } from './reviews-given/reviews-given.component';
+import { UserSongsComponent } from './user-songs/user-songs.component';
 
 @Component({
   selector: 'app-user',
@@ -23,6 +47,8 @@ export class UserComponent implements OnInit {
   userFB: string;
   userTwitter: string;
   userBalance: number;
+  reviews: IReviewModelAngular[];
+  songs: ISongModelAngular[];
   
   constructor(
 	private route: ActivatedRoute,
@@ -38,10 +64,24 @@ export class UserComponent implements OnInit {
 			this.userBio = result.bio;
 			this.userFB = result.facebook;
 			this.userTwitter = result.twitter;
-      this.userBalance = result.balance;
+			this.userBalance = result.balance;
 		  },
 		    () => {},
-        () => {}
+			() => {
+				user$.getReviews('5b0de177a0e9e35b0a1665f3')
+				.subscribe(
+				result => this.reviews = result,
+				() => {},
+				() => {
+					user$.getSongsByUserId('5b0de177a0e9e35b0a1665f2')
+					.subscribe(
+					result => {this.songs = result;console.log(this.songs);},
+					() => {},
+					() => {}
+					);
+				}
+				);
+			}
 	    );
   }
 
