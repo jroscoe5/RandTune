@@ -18,6 +18,7 @@ body {
 
 .container {
 	padding-top: 60px;
+	padding-bottom: 50px;
 }
 
 .musician-image {
@@ -46,6 +47,7 @@ body {
 .music-and-reviews {
 	background-color: #ec058e;
 }
-	
 
-	
+.title {
+	color: purple !important;
+}

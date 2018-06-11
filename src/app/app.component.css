@@ -6,10 +6,6 @@ body {
   padding-top: 60px;
 }
 
-/*.navbar-brand {
-    color: white !important;
-}*/
-
 .sidebar {
     padding-top: 60px;
 }
@@ -41,20 +37,3 @@ p#song-album {
 h2#song-name {
   display: inline-block;
 }
-
-/*.navbar {
-	background-color: purple !important;
-}
-
-ul.nav a {
-	color: #fff !important;
-}
-
-ul.nav a:hover {
-	color: #FFD400 !important;
-}
-
-.dropdown-menu {
-	color: purple !important;
-	background-color: purple !important;
-}*/

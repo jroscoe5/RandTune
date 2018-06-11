@@ -1,23 +1,3 @@
-/*import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/map';
-import { Input, Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Location } from '@angular/common';
-import { SongService } from '../newsong/song-service.service';
-import { UserService } from './user-service.service';
-import ISongModelAngular from '../share/ISongModelAngular';
-import { Song } from '../share/Song';
-import IUserModelAngular from '../share/IUserModelAngular';
-import { User } from '../share/User';
-import IReviewModelAngular from '../share/IReviewModelAngular';
-import { Review } from '../share/Review';
-
-@Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
-})*/
-
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import { Component, OnInit } from '@angular/core';
