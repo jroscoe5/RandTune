@@ -1,24 +1,3 @@
-/*import { Component, OnInit, Input } from '@angular/core';
-import { SongService } from '../song-service.service';
-@Component({
-  selector: 'app-newsong',
-  templateUrl: './newsong.component.html',
-  styleUrls: ['./newsong.component.css']
-})
-export class NewsongComponent implements OnInit {
-  song: any;
-  constructor(songS: SongService) { 
-    songS.getRandomSong()
-    .subscribe(
-      result => this.song = result,
-      () => {},
-      () => console.log('REST call:' + this.song)
-    );
-  }
-  ngOnInit() {
-  }
-}*/
-
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import { Component, OnInit } from '@angular/core';
@@ -47,8 +26,7 @@ export class NewsongComponent implements OnInit {
   musicianFB: string;
   musicianTwitter: string;
   mp3Id: string;
-  
-
+ 
   constructor(
     private route: ActivatedRoute,
     private location: Location,
@@ -76,11 +54,31 @@ export class NewsongComponent implements OnInit {
 				this.musicianTwitter = result.twitter;
 			  },
 			() => {},
-			() => {}
+			() => {/*song$.submitReview('5b0de177a0e9e35b0a1665f3', '5b0de177a0e9e35b0a1665f6', 'bad', '1')
+				.subscribe(
+				result => {console.log('hi!');},
+				() => {},
+				() => {}
+				);*/}
 			);}
 		);
 	}
 
   ngOnInit() {}
+  
+  submitReview(form){
+    //console.log(form);
+	//var x = String(form.value);
+	//console.log(x);
+	//console.log(rate);
+	this.song$.submitReview('5b0de177a0e9e35b0a1665f3', '5b0de177a0e9e35b0a1665f6', String(form.value), '4')
+	.subscribe(
+	result => {console.log('hello!');},
+	() => {console.log('a');},
+	() => {console.log('b');}
+	);
+    alert("The form was submitted");
+    form.reset();
+  }
 
 }

@@ -1,11 +1,11 @@
 <!-- New Song Page -->
-<div id="songs" class="container">
+<div id="songs" class="container" ng-controller="ExampleController">
 	<div class="row">
 		<!-- Blog Entries Column -->
 		<div class="col-md-8">
 			<!-- Song Player Card -->
 			<div class="card my-4">
-				<div class="card-body" ng-controller="ctlr">
+				<div class="card-body" >
 					<audio id="player" controls>
 						<source id="mp3-src" src={{mp3Id}} type="audio/mp3"/>
 					</audio>
@@ -19,23 +19,32 @@
 			<div class="card mb-4">
 				<div class="card-body">
 					<h2 class="card-title">Review</h2>
-					<form action="/html/tags/html_form_tag_action.cfm" method="post">
+					<form #reviewForm="ngForm" (ngSubmit)="submitReview(nameField);">
+						<input type="text" 
+						   class="form-control" 
+						   name="review-content"
+						   ngModel
+						   #nameField="ngModel"
+						   id="review-content">
+						<ngb-rating id="stars" [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" max="5"></ngb-rating>
+						<button class="btn btn-primary">Submit</button>
+					</form>
+					<!--<form action="/html/tags/html_form_tag_action.cfm" method="post">
 						<!--<div class="review-radio">
 							<input type="radio" name="rating" value="1" checked>1
 							<input type="radio" name="rating" value="2" checked>2
 							<input type="radio" name="rating" value="3" checked>3
 							<input type="radio" name="rating" value="4" checked>4
 							<input type="radio" name="rating" value="5" checked>5
-						</div>-->
+						</div>
 						<div class="form-group">
 							<ngb-rating id="stars" [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" max="5"></ngb-rating>
 						</div>
 						<div class="review-text form-group">
-							<textarea name="comments" id="comments" class="form-control" style="font-family:sans-serif;font-size:1.2em;" rows="3" placeholder="What did you think of this song?" wrap="hard">
-							</textarea>
+							<textarea name="comments" id="comments" class="form-control" style="font-family:sans-serif;font-size:1.2em;" rows="3" placeholder="What did you think of this song?" wrap="hard"></textarea>
 						</div>
-						<input type="submit" value="Submit">
-					</form>
+						<input ng-click="$SongService.submitReview()" type="submit" value="Submit">
+					</form>-->
 				</div>
 			</div>
 		</div>
@@ -79,5 +88,8 @@
 	<!-- /.row -->
 </div>
 <!-- /#songs -->
+
+<script>
+</script>
 
 

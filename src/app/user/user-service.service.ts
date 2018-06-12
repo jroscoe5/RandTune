@@ -33,9 +33,4 @@ export class UserService {
 	  return this.http.get('http://localhost:8080/users/' + userId + '/songs')
 	  .map(response => response.json());
   }
-  
-  submitReview(userId: string, songId: string, content: string, rating: string) {
-	string i = userId + '/' + songId + '/' + content + '/' + rating;
-	return this.http.post('http://localhost:8080/upload/review/', i);
-  }
 }
