@@ -11,7 +11,6 @@ import { User } from '../share/User';
 import { Plyr } from 'plyr';
 
 @Component({
-  //moduleId: module.id,
   selector: 'app-newsong',
   templateUrl: './newsong.component.html',
   styleUrls: ['./newsong.component.css']
@@ -26,7 +25,12 @@ export class NewsongComponent implements OnInit {
   musicianFB: string;
   musicianTwitter: string;
   mp3Id: string;
- 
+  songId: string;
+  reviewrating = 0;
+  selected = 0;
+  hovered = 0;
+  readonly = false;
+  
   constructor(
     private route: ActivatedRoute,
     private location: Location,
@@ -39,7 +43,7 @@ export class NewsongComponent implements OnInit {
 			this.album = result.album;
 			this.musician = result.musician;
 			this.mp3Id = 'http://localhost:8080/songs/raw/' + result.mp3_id;
-			
+			this.songId = result._id;
 			var audioPlayer = <HTMLAudioElement>document.getElementById('player');
 			audioPlayer.load();
 		},
@@ -54,24 +58,15 @@ export class NewsongComponent implements OnInit {
 				this.musicianTwitter = result.twitter;
 			  },
 			() => {},
-			() => {/*song$.submitReview('5b0de177a0e9e35b0a1665f3', '5b0de177a0e9e35b0a1665f6', 'bad', '1')
-				.subscribe(
-				result => {console.log('hi!');},
-				() => {},
-				() => {}
-				);*/}
+			() => {}
 			);}
 		);
 	}
 
   ngOnInit() {}
   
-  submitReview(form){
-    //console.log(form);
-	//var x = String(form.value);
-	//console.log(x);
-	//console.log(rate);
-	this.song$.submitReview('5b0de177a0e9e35b0a1665f3', '5b0de177a0e9e35b0a1665f6', String(form.value), '4')
+  submitReview(form, rate){
+	this.song$.submitReview('5b0de177a0e9e35b0a1665f3', this.songId, String(form.value), String(this.selected))
 	.subscribe(
 	result => {console.log('hello!');},
 	() => {console.log('a');},
@@ -80,5 +75,4 @@ export class NewsongComponent implements OnInit {
     alert("The form was submitted");
     form.reset();
   }
-
 }

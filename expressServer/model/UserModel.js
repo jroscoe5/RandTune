@@ -55,8 +55,10 @@ var UserModel = /** @class */ (function () {
     UserModel.prototype.bindReviewToUser = function (userId, reviewId) {
         var id = new Mongoose.Types.ObjectId(userId);
         var idVal = reviewId.valueOf();
+        console.log("REIVEW ID:" + idVal);
         this.model.findOne({ _id: id }, function (err, doc) {
             doc.reviews.push({ reviewID: idVal });
+            //doc.balance += 0.25;
             doc.save();
         });
     };

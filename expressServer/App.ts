@@ -6,6 +6,7 @@ import * as url from 'url';
 import * as bodyParser from 'body-parser';
 import * as multer from 'multer';
 import * as stream from 'stream';
+import * as mongoose from 'mongoose';
 
 import { DataAccess } from './DataAccess';
 import { SongModel } from './model/SongModel';
@@ -143,7 +144,8 @@ class App {
     })
 
     router.post('/upload/review/:userid/:songid/:content/:rating', (req, res) => {
-      var reviewid = new mongodb.ObjectId();
+	  console.log('posting!');
+      var reviewid = new mongoose.Types.ObjectId();
       var review = {
         _id: reviewid,
         user_id: req.params.userid,
@@ -154,7 +156,7 @@ class App {
       };
       this.Reviews.uploadReview(review);
       this.Users.bindReviewToUser(req.params.userid, reviewid);
-    })
+	})
 
     this.expressApp.use('/', router);
     this.expressApp.use('/', express.static(__dirname + '/pages'));

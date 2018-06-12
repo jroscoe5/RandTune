@@ -4,6 +4,7 @@ var express = require("express");
 var logger = require("morgan");
 var mongodb = require("mongodb");
 var bodyParser = require("body-parser");
+var mongoose = require("mongoose");
 var SongModel_1 = require("./model/SongModel");
 var UserModel_1 = require("./model/UserModel");
 var ReviewModel_1 = require("./model/ReviewModel");
@@ -117,7 +118,8 @@ var App = /** @class */ (function () {
             _this.Songs.retrieveRandom(res);
         });
         router.post('/upload/review/:userid/:songid/:content/:rating', function (req, res) {
-            var reviewid = new mongodb.ObjectId();
+            console.log('posting!');
+            var reviewid = new mongoose.Types.ObjectId();
             var review = {
                 _id: reviewid,
                 user_id: req.params.userid,
